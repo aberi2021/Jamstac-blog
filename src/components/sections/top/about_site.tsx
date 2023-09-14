@@ -4,7 +4,7 @@ import TopSection from '@/components/atoms/top_section'
 const TopAboutSite = () => {
   //:props
   return (
-    <TopSection label={'見出しテスト'}>
+    <TopSection label={'このサイトについて'}>
       <p className={style.top_about_p}>
         このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
         <br />
