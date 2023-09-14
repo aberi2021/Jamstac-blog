@@ -1,11 +1,24 @@
-import { GetStaticProps, NextPageWithLayout } from 'next'
+import { GetStaticProps } from 'next'
+import type { NextPageWithLayout } from './_app'
 import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import style from '../styles/Home.module.css'
 import TopAboutSite from '@/components/sections/top/about_site'
 
-const Home: NextPageWithLayout = ({ allBlogs, categoryBlogs }) => {
+// ブログデータの型
+interface Blog {
+  id: string
+  title: string
+  // 他のプロパティもここに追加するか、実際のデータ構造に合わせて調整
+}
+
+type Props = {
+  allBlogs: Blog[]
+  categoryBlogs: Blog[] // 正しい型を指定
+}
+
+const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
   return (
     <>
       {/* このサイトについて */}
