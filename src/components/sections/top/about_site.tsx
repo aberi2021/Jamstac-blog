@@ -13,7 +13,7 @@ const TopAboutSite = () => {
         今の所練習用のブログ記事しかありません。今後頑張る所存です。
       </p>
       <p className={style.top_about_p}>
-        こちらでコードも見れます。拙いですがよろしければご確認ください。
+        こちらでコードも見れます。拙いですがよろしければご確認ください。アドバイスいただけましたら喜びます。
         <br />
         <a
           href="https://github.com/aberi2021/jamstac-blog"
