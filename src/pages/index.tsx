@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { GetStaticProps, NextPageWithLayout } from 'next'
 import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
@@ -9,28 +8,8 @@ import TopAboutSite from '@/components/sections/top/about_site'
 const Home: NextPageWithLayout = ({ allBlogs, categoryBlogs }) => {
   return (
     <>
+      {/* このサイトについて */}
       <TopAboutSite />
-      {/* <section className={style.section}>
-        <TopSection label={'見出しのテスト2だよ'} />
-        <h2 className={style.sectionTitle}>このサイトについて</h2>
-        <p className={style.top_about_p}>
-          このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
-          <br />
-          そのため、制作途中でガンガン崩れている場合もあります。ご了承ください。
-          <br />
-          今の所練習用のブログ記事しかありません。
-        </p>
-        <p className={style.top_about_p}>
-          こちらでコードも見れます。拙いですがよろしければご確認ください。
-          <br />
-          <a
-            href="https://github.com/aberi2021/jamstac-blog"
-            aria-label="このサイトのGithubリポジトリへ移動する"
-          >
-            https://github.com/aberi2021/jamstac-blog
-          </a>
-        </p>
-      </section> */}
       <section className={style.section}>
         <h2 className={style.sectionTitle}>全体記事の新着三件を取得</h2>
         <ul>

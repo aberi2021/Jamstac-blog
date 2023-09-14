@@ -1,12 +1,10 @@
-import { ReactNode } from 'react'
-import styled from 'styled-components'
 import style from '@/styles/Home.module.css'
+import TopSection from '@/components/atoms/top_section'
 
 const TopAboutSite = () => {
   //:props
   return (
-    <section>
-      <h2>見出しのテストだよ</h2>
+    <TopSection label={'見出しテスト'}>
       <p className={style.top_about_p}>
         このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
         <br />
@@ -24,7 +22,7 @@ const TopAboutSite = () => {
           https://github.com/aberi2021/jamstac-blog
         </a>
       </p>
-    </section>
+    </TopSection>
   )
 }
 

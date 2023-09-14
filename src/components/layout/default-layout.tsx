@@ -2,7 +2,7 @@ import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
 //header.tsx footer.tsxを読み込む
 
-import { ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
 type Props = {
