@@ -46,18 +46,29 @@ const NewsDetail: NextPage<Props> = (props) => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   const res = await client.get({ endpoint: 'blogs', queries: { limit: 1000 } })
 
-  const paths = res.contents.map((post) => ({
+  const paths = res.contents.map((post: { id: string }) => ({
     params: { id: post.id },
   }))
 
   return { paths, fallback: false }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await client.get({ endpoint: 'blogs', contentId: params.id })
+export const getStaticProps: GetStaticProps<Props, { id: string }> = async ({
+  params,
+}) => {
+  if (!params) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const res = await client.get({
+    endpoint: 'blogs',
+    contentId: params.id as string,
+  })
 
   return {
     props: {

@@ -12,14 +12,14 @@ interface Blog {
 }
 
 type Props = {
-  allBlogs: Blog[] // 正しい型を指定
+  categoryBlogs: Blog[] // 正しい型を指定
 }
 
-const TopBlogs: FC<Props> = ({ allBlogs }) => {
+const TopCategoryBlogs: FC<Props> = ({ categoryBlogs }) => {
   return (
-    <TopSection label={'全体記事の新着三件を取得'}>
+    <TopSection label={'カテゴリー「更新情報」の新着三件を取得'}>
       <ul>
-        {allBlogs.map((blog) => (
+        {categoryBlogs.map((blog) => (
           <li key={blog.id}>
             <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
           </li>
@@ -29,18 +29,23 @@ const TopBlogs: FC<Props> = ({ allBlogs }) => {
   )
 }
 
+// カテゴリー別新着三件（更新情報）を取得（ここでカテゴリーIDを指定）
 export const getStaticProps: GetStaticProps = async () => {
-  // 全体記事新着三件を取得
-  const allBlogs = await client.get({
+  const categoryBlogs = await client.get({
     endpoint: 'blogs',
-    queries: { limit: 3, orders: '-date' },
+    queries: {
+      limit: 3,
+      orders: '-date',
+      // カテゴリーIDに適切な値を指定する必要があります
+      filters: 'category[equals]lbmyk28j226',
+    },
   })
 
   return {
     props: {
-      allBlogs: allBlogs.contents,
+      categoryBlogs: categoryBlogs.contents,
     },
   }
 }
 
-export default TopBlogs
+export default TopCategoryBlogs
