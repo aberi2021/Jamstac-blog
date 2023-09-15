@@ -5,6 +5,7 @@ import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import style from '../styles/Home.module.css'
 import TopAboutSite from '@/components/sections/top/about_site'
+import TopSlider from '@/components/sections/top/slider'
 
 // ブログデータの型
 interface Blog {
@@ -45,6 +46,55 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           ))}
         </ul>
       </section>
+      {/* スライダー */}
+      <TopSlider />
+      {/* <Splide aria-label="お気に入りの写真">
+        <SplideSlide>
+          <Image
+            src="/top/slider_images/binforest.jpg"
+            alt="瓶の中に森が広がる幻想的なイラスト"
+            width={512}
+            height={512}
+            decoding="async"
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src="/top/slider_images/cat.jpg"
+            alt="風船に囲まれた白猫のイラスト"
+            width={512}
+            height={512}
+            decoding="async"
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src="/top/slider_images/frog.jpg"
+            alt="カエルの顔のイラスト"
+            width={512}
+            height={512}
+            decoding="async"
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src="/top/slider_images/monster.jpg"
+            alt="けむくじゃらの青色の可愛いモンスターがバナナを抱きしめているイラスト"
+            width={512}
+            height={512}
+            decoding="async"
+          />
+        </SplideSlide>
+        <SplideSlide>
+          <Image
+            src="/top/slider_images/snackhouse.jpg"
+            alt="森の中に佇むお菓子の家のイラスト"
+            width={512}
+            height={512}
+            decoding="async"
+          />
+        </SplideSlide>
+      </Splide> */}
     </>
   )
 }
