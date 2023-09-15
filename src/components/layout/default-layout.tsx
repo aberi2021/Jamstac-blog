@@ -30,7 +30,7 @@ const Main = styled.main`
   width: 100%;
   max-width: 908px;
   margin: 0 auto;
-  padding: 5rem 1rem;
+  padding: 0 1rem;
   flex: 1;
 `
 export default DefaultLayout

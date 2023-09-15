@@ -16,6 +16,8 @@ const TopSection: FC<Props> = (props) => {
   )
 }
 
-const Section = styled.section``
+const Section = styled.section`
+  padding-top: 2rem;
+`
 
 export default TopSection
