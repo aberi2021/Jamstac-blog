@@ -9,7 +9,7 @@ type Props = {
   data: {
     content: string
     createdAt: string
-    eyecatch: {
+    eyecatch?: {
       url: string
       height: number
       width: number
@@ -23,23 +23,20 @@ type Props = {
 }
 
 const BlogDetail: NextPageWithLayout<Props> = (props) => {
+  const { title, content, eyecatch } = props.data
+
   return (
     <>
-      <h1>{props.data.title}</h1>
-      <Image
-        src={props.data.eyecatch.url}
-        width={props.data.eyecatch.width}
-        height={props.data.eyecatch.height}
-        //数値を指定してもOK
-        // width={1000}
-        // height={500}
-
-        //空の場合
-        alt={''}
-        //タイトルを入れる場合
-        //alt={props.data.title}
-      />
-      <div dangerouslySetInnerHTML={{ __html: props.data.content }}></div>
+      <h1>{title}</h1>
+      {eyecatch && ( // eyecatch が存在する場合にのみ表示
+        <Image
+          src={eyecatch.url}
+          width={eyecatch.width}
+          height={eyecatch.height}
+          alt={''}
+        />
+      )}
+      <div dangerouslySetInnerHTML={{ __html: content }}></div>
       <Button href={'/'} label={'トップへ戻る'} />
     </>
   )
