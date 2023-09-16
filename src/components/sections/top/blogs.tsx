@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import TopSection from '@/components/atoms/top_section'
+import TopSection from '@/components/layout/top_section'
 import { client } from '@/lib/client'
 import { GetStaticProps } from 'next'
 import { FC } from 'react'

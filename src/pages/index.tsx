@@ -4,7 +4,7 @@ import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 // import style from '../styles/Home.module.css'
-import TopSection from '@/components/atoms/top_section'
+import TopSection from '@/components/layout/top_section'
 import TopAboutSite from '@/components/sections/top/about_site'
 import TopSlider from '@/components/sections/top/slider'
 

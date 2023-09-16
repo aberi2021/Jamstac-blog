@@ -1,5 +1,5 @@
 import style from '@/styles/Home.module.css'
-import TopSection from '@/components/atoms/top_section'
+import TopSection from '@/components/layout/top_section'
 
 const TopAboutSite = () => {
   //:props
