@@ -7,6 +7,7 @@ import Link from 'next/link'
 import TopSection from '@/components/layout/top_section'
 import TopAboutSite from '@/components/sections/top/about_site'
 import TopSlider from '@/components/sections/top/slider'
+import '@/styles/Home.module.css'
 
 // ブログデータの型
 interface Blog {
@@ -25,7 +26,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
     <>
       {/* このサイトについて */}
       <TopAboutSite />
-      <TopSection label={'このサイトについて'}>
+      <TopSection label={'新着記事3件を取得'}>
         <ul>
           {allBlogs.map((blog) => (
             <li key={blog.id}>
@@ -34,7 +35,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           ))}
         </ul>
       </TopSection>
-      <TopSection label={'「更新情報」カテゴリーの新着三件を取得'}>
+      <TopSection label={'「更新情報」カテゴリーの新着3件を取得'}>
         <ul>
           {categoryBlogs.map((blog) => (
             <li key={blog.id}>
