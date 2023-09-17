@@ -6,6 +6,7 @@ import Link from 'next/link'
 import TopSection from '@/components/layout/top_section'
 import TopAboutSite from '@/components/sections/top/about_site'
 import TopSlider from '@/components/sections/top/slider'
+import Button from '@/components/atoms/button'
 import '@/styles/Home.module.css'
 
 // ブログデータの型
@@ -32,6 +33,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
             </li>
           ))}
         </ul>
+        <Button href={'/blogs'} label={'全ての記事を見る'} />
       </TopSection>
       <TopSection label={'「このサイトについて」カテゴリーの新着6件を取得'}>
         <ul>

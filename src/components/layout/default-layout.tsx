@@ -29,7 +29,7 @@ const BodyWrapper = styled.div`
 const Main = styled.main`
   width: 100%;
   max-width: 908px;
-  margin: 5rem auto;
+  margin: 7rem auto;
   padding: 0 1rem;
   flex: 1;
 `
