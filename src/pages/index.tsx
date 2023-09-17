@@ -26,7 +26,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
     <>
       {/* このサイトについて */}
       <TopAboutSite />
-      <TopSection label={'新着記事3件を取得'}>
+      <TopSection label={'新着記事6件を取得'}>
         <ul>
           {allBlogs.map((blog) => (
             <li key={blog.id}>
@@ -35,7 +35,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           ))}
         </ul>
       </TopSection>
-      <TopSection label={'「更新情報」カテゴリーの新着3件を取得'}>
+      <TopSection label={'「このサイトについて」カテゴリーの新着3件を取得'}>
         <ul>
           {categoryBlogs.map((blog) => (
             <li key={blog.id}>
@@ -54,14 +54,14 @@ export const getStaticProps: GetStaticProps = async () => {
   // 全体記事新着三件を取得
   const allBlogs = await client.get({
     endpoint: 'blogs',
-    queries: { limit: 3, orders: '-date' },
+    queries: { limit: 5, orders: '-date' },
   })
 
-  // カテゴリー別新着三件（更新情報）を取得（ここでカテゴリーIDを指定）
+  // カテゴリー別新着三件（備忘録）を取得（ここでカテゴリーIDを指定）
   const categoryBlogs = await client.get({
     endpoint: 'blogs',
     queries: {
-      limit: 3,
+      limit: 5,
       orders: '-date',
       // カテゴリーIDに適切な値を指定する必要があります
       filters: 'category[equals]lbmyk28j226',
