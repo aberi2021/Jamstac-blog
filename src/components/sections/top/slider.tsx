@@ -2,13 +2,19 @@ import Image from 'next/image'
 
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
+import '@/styles/splide.module.css'
 import styled from 'styled-components'
 
 const TopSlider = () => {
   return (
     <>
       <SplideWrapper>
-        <Splide aria-label="お気に入りの写真">
+        <Splide
+          aria-label="動作テスト用スライダー"
+          options={{
+            width: 500,
+          }}
+        >
           <SplideSlide>
             <Image
               src="/top/slider_images/binforest.jpg"
