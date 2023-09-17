@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // 全体記事新着三件を取得
   const allBlogs = await client.get({
     endpoint: 'blogs',
-    queries: { limit: 5, orders: '-date' },
+    queries: { limit: 6, orders: '-date' },
   })
 
   // カテゴリー別新着三件（備忘録）を取得（ここでカテゴリーIDを指定）
