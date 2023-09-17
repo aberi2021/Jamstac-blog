@@ -25,7 +25,7 @@ const HeaderWrap = styled.header`
   z-index: 100;
   width: 100%;
 `
-const HeaderInner = styled.header`
+const HeaderInner = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   h1 {
