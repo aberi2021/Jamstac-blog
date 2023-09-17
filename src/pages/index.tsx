@@ -3,7 +3,6 @@ import type { NextPageWithLayout } from './_app'
 import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
-// import style from '../styles/Home.module.css'
 import TopSection from '@/components/layout/top_section'
 import TopAboutSite from '@/components/sections/top/about_site'
 import TopSlider from '@/components/sections/top/slider'
@@ -13,12 +12,11 @@ import '@/styles/Home.module.css'
 interface Blog {
   id: string
   title: string
-  // 他のプロパティもここに追加するか、実際のデータ構造に合わせて調整
 }
 
 type Props = {
   allBlogs: Blog[]
-  categoryBlogs: Blog[] // 正しい型を指定
+  categoryBlogs: Blog[]
 }
 
 const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
@@ -35,7 +33,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           ))}
         </ul>
       </TopSection>
-      <TopSection label={'「このサイトについて」カテゴリーの新着3件を取得'}>
+      <TopSection label={'「このサイトについて」カテゴリーの新着6件を取得'}>
         <ul>
           {categoryBlogs.map((blog) => (
             <li key={blog.id}>
@@ -61,7 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const categoryBlogs = await client.get({
     endpoint: 'blogs',
     queries: {
-      limit: 5,
+      limit: 6,
       orders: '-date',
       // カテゴリーIDに適切な値を指定する必要があります
       filters: 'category[equals]lbmyk28j226',
