@@ -5,6 +5,7 @@ import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import Button from '@/components/atoms/button'
 import BreadCrumbs from '@/components/molecules/breadcrumb'
+import { NextSeo } from 'next-seo'
 
 // ブログデータの型
 interface Blog {
@@ -17,10 +18,10 @@ type Props = {
 }
 
 const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs }) => {
-  const pageTitle = allBlogs.length > 0 ? allBlogs[0].title : ''
-
+  // pageTitleをPropsから受け取る
   return (
     <>
+      <NextSeo title={'記事一覧'} />
       <BreadCrumbs
         lists={[
           {
@@ -28,11 +29,12 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs }) => {
             path: '/',
           },
           {
-            string: pageTitle, // タイトルを表示する
+            string: '記事一覧', // タイトルを表示する
             path: '', // path プロパティを追加し、空文字列を指定
           },
         ]}
       />
+      <h1>記事一覧</h1> {/* pageTitleを表示 */}
       <div>
         <ul>
           {allBlogs.map((blog) => (
@@ -56,6 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       allBlogs: allBlogs.contents,
+      pageTitle: '記事一覧', // pageTitleを適切な値に設定
     },
   }
 }
