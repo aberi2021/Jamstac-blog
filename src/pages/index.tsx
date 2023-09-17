@@ -49,13 +49,13 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // 全体記事新着三件を取得
+  // 全体記事新着6件を取得
   const allBlogs = await client.get({
     endpoint: 'blogs',
     queries: { limit: 6, orders: '-date' },
   })
 
-  // カテゴリー別新着三件（備忘録）を取得（ここでカテゴリーIDを指定）
+  // カテゴリー別新着6件（備忘録）を取得（ここでカテゴリーIDを指定）
   const categoryBlogs = await client.get({
     endpoint: 'blogs',
     queries: {

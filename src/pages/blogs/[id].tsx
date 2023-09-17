@@ -1,6 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
-import type { NextPageWithLayout } from '@/pages/_app'
-import DefaultLayout from '@/components/layout/default-layout'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { NextSeo } from 'next-seo'
+// import type { NextPageWithLayout } from '@/pages/_app'
+// import DefaultLayout from '@/components/layout/default-layout'
 import { client } from '@/lib/client'
 import Image from 'next/image'
 import Button from '@/components/atoms/button'
@@ -23,11 +24,13 @@ type Props = {
   }
 }
 
-const BlogDetail: NextPageWithLayout<Props> = (props) => {
+const BlogDetail: NextPage<Props> = (props) => {
+  // const BlogDetail: NextPageWithLayout<Props> = (props) => {
   const { title, content, eyecatch } = props.data
 
   return (
     <>
+      <NextSeo title={`${title}`} />
       <BreadCrumbs
         lists={[
           {
@@ -76,6 +79,6 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   }
 }
 
-BlogDetail.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
+// BlogDetail.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
 
 export default BlogDetail
