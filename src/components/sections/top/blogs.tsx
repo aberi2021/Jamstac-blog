@@ -8,11 +8,10 @@ import { FC } from 'react'
 interface Blog {
   id: string
   title: string
-  // 他のプロパティもここに追加するか、実際のデータ構造に合わせて調整
 }
 
 type Props = {
-  allBlogs: Blog[] // 正しい型を指定
+  allBlogs: Blog[]
 }
 
 const TopBlogs: FC<Props> = ({ allBlogs }) => {

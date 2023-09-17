@@ -8,11 +8,10 @@ import { FC } from 'react'
 interface Blog {
   id: string
   title: string
-  // 他のプロパティもここに追加するか、実際のデータ構造に合わせて調整
 }
 
 type Props = {
-  categoryBlogs: Blog[] // 正しい型を指定
+  categoryBlogs: Blog[]
 }
 
 const TopCategoryBlogs: FC<Props> = ({ categoryBlogs }) => {
@@ -36,7 +35,6 @@ export const getStaticProps: GetStaticProps = async () => {
     queries: {
       limit: 3,
       orders: '-date',
-      // カテゴリーIDに適切な値を指定する必要があります
       filters: 'category[equals]lbmyk28j226',
     },
   })

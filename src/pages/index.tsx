@@ -61,7 +61,6 @@ export const getStaticProps: GetStaticProps = async () => {
     queries: {
       limit: 6,
       orders: '-date',
-      // カテゴリーIDに適切な値を指定する必要があります
       filters: 'category[equals]lbmyk28j226',
     },
   })
