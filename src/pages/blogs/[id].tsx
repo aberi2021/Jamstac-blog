@@ -4,6 +4,7 @@ import DefaultLayout from '@/components/layout/default-layout'
 import { client } from '@/lib/client'
 import Image from 'next/image'
 import Button from '@/components/atoms/button'
+import BreadCrumbs from '@/components/molecules/breadcrumb'
 
 type Props = {
   data: {
@@ -27,6 +28,18 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
 
   return (
     <>
+      <BreadCrumbs
+        lists={[
+          {
+            string: 'トップページ',
+            path: '/',
+          },
+          {
+            string: props.data.title, // タイトルを表示する
+            path: '', // path プロパティを追加し、空文字列を指定
+          },
+        ]}
+      />
       <h1>{title}</h1>
       {eyecatch && ( // eyecatch が存在する場合にのみ表示
         <Image
