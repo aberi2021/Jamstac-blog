@@ -43,20 +43,19 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
           },
         ]}
       />
-      {/* <BlogContents> */}
-      <BlogContents>
-        <h1>{title}</h1>
-        {eyecatch && ( // eyecatch が存在する場合にのみ表示
-          <Image
-            src={eyecatch.url}
-            width={eyecatch.width}
-            height={eyecatch.height}
-            alt={''}
-          />
-        )}
+      <BlogTitle>{title}</BlogTitle>
+      {eyecatch && ( // eyecatch が存在する場合にのみ表示
+        <Image
+          src={eyecatch.url}
+          width={eyecatch.width}
+          height={eyecatch.height}
+          alt={''}
+        />
+      )}
+      <ContentsWrapper>
         <div dangerouslySetInnerHTML={{ __html: content }}></div>
-        <Button href={'/'} label={'トップへ戻る'} />
-      </BlogContents>
+      </ContentsWrapper>
+      <Button href={'/'} label={'トップへ戻る'} />
     </>
   )
 }
@@ -84,11 +83,24 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 BlogDetail.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
 
-const BlogContents = styled.div`
-  pre {
+//styled-component
+const BlogTitle = styled.h1`
+  margin-top: 1rem;
+`
+const ContentsWrapper = styled.div`
+  margin-top: 1rem;
+  pre,
+  code {
     background-color: #000;
     color: #fff;
     font-size: 1rem;
+  }
+  pre {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  p > code {
+    padding: 0 0.5rem;
   }
 `
 
