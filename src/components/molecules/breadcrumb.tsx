@@ -35,6 +35,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ lists }) => {
 
 const BreadCrumbsList = styled.ol`
   display: flex;
+  font-size: 0.875rem;
 `
 
 export default BreadCrumbs
