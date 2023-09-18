@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
+import styled from 'styled-components'
 import type { NextPageWithLayout } from '@/pages/_app'
 import DefaultLayout from '@/components/layout/default-layout'
 import { client } from '@/lib/client'
@@ -42,17 +43,20 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
           },
         ]}
       />
-      <h1>{title}</h1>
-      {eyecatch && ( // eyecatch が存在する場合にのみ表示
-        <Image
-          src={eyecatch.url}
-          width={eyecatch.width}
-          height={eyecatch.height}
-          alt={''}
-        />
-      )}
-      <div dangerouslySetInnerHTML={{ __html: content }}></div>
-      <Button href={'/'} label={'トップへ戻る'} />
+      {/* <BlogContents> */}
+      <BlogContents>
+        <h1>{title}</h1>
+        {eyecatch && ( // eyecatch が存在する場合にのみ表示
+          <Image
+            src={eyecatch.url}
+            width={eyecatch.width}
+            height={eyecatch.height}
+            alt={''}
+          />
+        )}
+        <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        <Button href={'/'} label={'トップへ戻る'} />
+      </BlogContents>
     </>
   )
 }
@@ -79,5 +83,13 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 }
 
 BlogDetail.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
+
+const BlogContents = styled.div`
+  pre {
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+  }
+`
 
 export default BlogDetail

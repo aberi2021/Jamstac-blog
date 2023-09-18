@@ -15,13 +15,13 @@ interface Blog {
 
 type Props = {
   allBlogs: Blog[]
+  pageTitle: string // pageTitleを追加
 }
 
-const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs }) => {
-  // pageTitleをPropsから受け取る
+const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
   return (
     <>
-      <NextSeo title={'記事一覧'} />
+      <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
       <BreadCrumbs
         lists={[
           {
@@ -29,12 +29,12 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs }) => {
             path: '/',
           },
           {
-            string: '記事一覧', // タイトルを表示する
+            string: pageTitle, // タイトルを表示する
             path: '', // path プロパティを追加し、空文字列を指定
           },
         ]}
       />
-      <h1>記事一覧</h1> {/* pageTitleを表示 */}
+      <h1>{pageTitle}</h1> {/* pageTitleを表示 */}
       <div>
         <ul>
           {allBlogs.map((blog) => (
