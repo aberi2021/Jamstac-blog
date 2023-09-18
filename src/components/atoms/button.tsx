@@ -20,6 +20,7 @@ const StyledBtn = styled(Link)`
   border-radius: 25px;
   background: #333;
   color: #fff;
+  margin-top: 1rem;
 `
 
 export default Button
