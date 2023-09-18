@@ -98,6 +98,9 @@ const ContentsWrapper = styled.div`
   pre {
     padding: 1rem;
     margin-top: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: auto;
   }
   p > code {
     padding: 0 0.5rem;
