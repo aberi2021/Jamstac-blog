@@ -30,26 +30,32 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
         </TopSection>
         <TopSection>
           <SectionTitle>新着記事6件を取得</SectionTitle>
-          <ul>
-            {allBlogs.map((blog) => (
-              <li key={blog.id}>
-                <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-              </li>
-            ))}
-          </ul>
-          <Button href={'/blogs'} label={'全ての記事を見る'} />
+          <SectionContents>
+            <ul>
+              {allBlogs.map((blog) => (
+                <li key={blog.id}>
+                  <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+                </li>
+              ))}
+            </ul>
+            <ButtonWrapper>
+              <Button href={'/blogs'} label={'全ての記事を見る'} />
+            </ButtonWrapper>
+          </SectionContents>
         </TopSection>
         <TopSection>
           <SectionTitle>
             「このサイトについて」カテゴリーの新着6件を取得
           </SectionTitle>
-          <ul>
-            {categoryBlogs.map((blog) => (
-              <li key={blog.id}>
-                <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <SectionContents>
+            <ul>
+              {categoryBlogs.map((blog) => (
+                <li key={blog.id}>
+                  <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </SectionContents>
         </TopSection>
         {/* スライダー */}
         <TopSection>
@@ -96,8 +102,16 @@ const TopContentsWrapper = styled.div`
 
 const TopSection = styled.div``
 
+const SectionContents = styled.div`
+  margin-top: 1rem;
+`
+
 const SectionTitle = styled.h2`
   font-size: 1.5rem;
+`
+
+const ButtonWrapper = styled.div`
+  margin-top: 1rem;
 `
 
 export default Home

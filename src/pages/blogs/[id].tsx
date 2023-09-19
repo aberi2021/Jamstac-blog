@@ -70,14 +70,14 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
           {prevPost && (
             <p>
               <Link href={`/blogs/${prevPost.id}`}>
-                前の記事（{prevPost.title}
+                前の記事：{prevPost.title}
               </Link>
             </p>
           )}
           {nextPost && (
             <p>
               <Link href={`/blogs/${nextPost.id}`}>
-                次の記事（{nextPost.title}
+                次の記事：{nextPost.title}
               </Link>
             </p>
           )}
@@ -136,8 +136,9 @@ const BlogPage = styled.div`
   padding: 1rem;
 `
 
-const BlogTitle = styled.h2`
+const BlogTitle = styled.h1`
   font-size: 2rem;
+  margin-top: 2rem;
 `
 
 const ContentsWrapper = styled.div`

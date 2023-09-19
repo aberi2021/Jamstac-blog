@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Button from '@/components/atoms/button'
 import BreadCrumbs from '@/components/molecules/breadcrumb'
 import { NextSeo } from 'next-seo'
+import styled from 'styled-components'
 
 // ブログデータの型
 interface Blog {
@@ -34,8 +35,8 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
           },
         ]}
       />
-      <h1>{pageTitle}</h1> {/* pageTitleを表示 */}
-      <div>
+      <PageTitle>{pageTitle}</PageTitle>
+      <AllBlogList>
         <ul>
           {allBlogs.map((blog) => (
             <li key={blog.id}>
@@ -43,8 +44,10 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
             </li>
           ))}
         </ul>
-      </div>
-      <Button href={'/'} label={'トップへ戻る'} />
+      </AllBlogList>
+      <ButtonWrapper>
+        <Button href={'/'} label={'トップへ戻る'} />
+      </ButtonWrapper>
     </>
   )
 }
@@ -64,5 +67,17 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 AllBlogs.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
+
+const PageTitle = styled.h1`
+  margin-top: 2rem;
+`
+
+const AllBlogList = styled.div`
+  margin-top: 1rem;
+`
+
+const ButtonWrapper = styled.div`
+  margin-top: 2rem;
+`
 
 export default AllBlogs
