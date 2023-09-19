@@ -1,16 +1,16 @@
-import style from '@/styles/Home.module.css'
+import styled from 'styled-components'
 
 const TopAboutSite = () => {
   //:props
   return (
     <>
-      <h2>このサイトについて</h2>
-      <p className={style.top_about_p}>
+      <SectionTitle>このサイトについて</SectionTitle>
+      <p>
         このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
         <br />
         そのため、制作途中でガンガン崩れている場合もあります。ご了承ください。
       </p>
-      <p className={style.top_about_p}>
+      <p>
         以下リンクでコードも見れます。拙いですがよろしければご確認ください。
         <br />
         <a
@@ -29,5 +29,9 @@ const TopAboutSite = () => {
     </>
   )
 }
+
+const SectionTitle = styled.h2`
+  font-size: 1.5rem;
+`
 
 export default TopAboutSite

@@ -29,7 +29,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           <TopAboutSite />
         </TopSection>
         <TopSection>
-          <h2>新着記事6件を取得</h2>
+          <SectionTitle>新着記事6件を取得</SectionTitle>
           <ul>
             {allBlogs.map((blog) => (
               <li key={blog.id}>
@@ -40,7 +40,9 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           <Button href={'/blogs'} label={'全ての記事を見る'} />
         </TopSection>
         <TopSection>
-          <h2>「このサイトについて」カテゴリーの新着6件を取得</h2>
+          <SectionTitle>
+            「このサイトについて」カテゴリーの新着6件を取得
+          </SectionTitle>
           <ul>
             {categoryBlogs.map((blog) => (
               <li key={blog.id}>
@@ -93,5 +95,9 @@ const TopContentsWrapper = styled.div`
 `
 
 const TopSection = styled.div``
+
+const SectionTitle = styled.h2`
+  font-size: 1.5rem;
+`
 
 export default Home

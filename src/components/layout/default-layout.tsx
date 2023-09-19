@@ -33,6 +33,9 @@ const Main = styled.main`
   margin: 7rem auto;
   padding: 0 1rem;
   grid-area: contents;
+  p + p {
+    margin-top: 1rem;
+  }
 `
 
 export default DefaultLayout
