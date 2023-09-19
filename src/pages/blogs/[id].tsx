@@ -66,13 +66,25 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
         <ContentsWrapper>
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
         </ContentsWrapper>
-        {prevPost && (
-          <Link href={`/blogs/${prevPost.id}`}>前の記事（{prevPost.title}</Link>
-        )}
-        {nextPost && (
-          <Link href={`/blogs/${nextPost.id}`}>次の記事（{nextPost.title}</Link>
-        )}
-        <Button href={'/'} label={'トップへ戻る'} />
+        <PrevNextPosts>
+          {prevPost && (
+            <p>
+              <Link href={`/blogs/${prevPost.id}`}>
+                前の記事（{prevPost.title}
+              </Link>
+            </p>
+          )}
+          {nextPost && (
+            <p>
+              <Link href={`/blogs/${nextPost.id}`}>
+                次の記事（{nextPost.title}
+              </Link>
+            </p>
+          )}
+        </PrevNextPosts>
+        <ButtonWrapper>
+          <Button href={'/'} label={'トップへ戻る'} />
+        </ButtonWrapper>
       </BlogPage>
     </>
   )
@@ -146,6 +158,18 @@ const ContentsWrapper = styled.div`
   p > code {
     padding: 0 0.5rem;
   }
+`
+
+const PrevNextPosts = styled.div`
+  background-color: #ededed;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 1px solid #333;
+`
+
+const ButtonWrapper = styled.div`
+  text-align: center;
+  margin-top: 2rem;
 `
 
 export default BlogDetail
