@@ -1,10 +1,10 @@
 import style from '@/styles/Home.module.css'
-import TopFirstSection from '@/components/layout/top_firstSection'
 
 const TopAboutSite = () => {
   //:props
   return (
-    <TopFirstSection label={'このサイトについて'}>
+    <>
+      <h2>このサイトについて</h2>
       <p className={style.top_about_p}>
         このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
         <br />
@@ -26,7 +26,7 @@ const TopAboutSite = () => {
         <br />
         それでも楽しいので、理解を深めていきたいなと思っています。
       </p>
-    </TopFirstSection>
+    </>
   )
 }
 

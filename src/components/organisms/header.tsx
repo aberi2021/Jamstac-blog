@@ -1,14 +1,30 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import { useRouter } from 'next/router' // useRouterをインポート
 
 const Header: FC = () => {
+  const router = useRouter() // useRouterを初期化
+
+  // 現在のページパスを取得
+  const currentPath = router.pathname
+
+  // トップページの場合、h1要素をdiv要素に変更
+  const headerContent =
+    currentPath === '/' ? (
+      <h1>
+        <Link href={'/'}>あべのサイト</Link>
+      </h1>
+    ) : (
+      <HeaderSiteName>
+        <Link href={'/'}>あべのサイト</Link>
+      </HeaderSiteName>
+    )
+
   return (
     <HeaderWrap>
       <HeaderInner>
-        <h1>
-          <Link href={'/'}>あべのサイト</Link>
-        </h1>
+        {headerContent}
         <p>
           <a href={'https://twitter.com/a_be_ri'}>X(Twitter)</a>
         </p>
@@ -34,6 +50,10 @@ const HeaderInner = styled.div`
   p {
     text-align: right;
   }
+`
+const HeaderSiteName = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
 `
 
 export default Header

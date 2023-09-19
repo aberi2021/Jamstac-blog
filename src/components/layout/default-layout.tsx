@@ -21,8 +21,9 @@ const DefaultLayout: FC<Props> = (props) => {
 }
 
 const BodyWrapper = styled.div`
-  display: flex;
   flex-direction: column;
+  display: grid;
+  grid-template: 'header' auto 'contents' 1fr 'footer' auto/100%;
   min-height: 100vh;
 `
 
@@ -31,6 +32,7 @@ const Main = styled.main`
   max-width: 908px;
   margin: 7rem auto;
   padding: 0 1rem;
-  flex: 1;
+  grid-area: contents;
 `
+
 export default DefaultLayout

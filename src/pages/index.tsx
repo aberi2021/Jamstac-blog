@@ -3,11 +3,11 @@ import type { NextPageWithLayout } from './_app'
 import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
-import TopSection from '@/components/layout/top_section'
 import TopAboutSite from '@/components/sections/top/about_site'
 import TopSlider from '@/components/sections/top/slider'
 import Button from '@/components/atoms/button'
 import '@/styles/Home.module.css'
+import styled from 'styled-components'
 
 // ブログデータの型
 interface Blog {
@@ -23,29 +23,37 @@ type Props = {
 const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
   return (
     <>
-      {/* このサイトについて */}
-      <TopAboutSite />
-      <TopSection label={'新着記事6件を取得'}>
-        <ul>
-          {allBlogs.map((blog) => (
-            <li key={blog.id}>
-              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-            </li>
-          ))}
-        </ul>
-        <Button href={'/blogs'} label={'全ての記事を見る'} />
-      </TopSection>
-      <TopSection label={'「このサイトについて」カテゴリーの新着6件を取得'}>
-        <ul>
-          {categoryBlogs.map((blog) => (
-            <li key={blog.id}>
-              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </TopSection>
-      {/* スライダー */}
-      <TopSlider />
+      <TopContentsWrapper>
+        {/* このサイトについて */}
+        <TopSection>
+          <TopAboutSite />
+        </TopSection>
+        <TopSection>
+          <h2>新着記事6件を取得</h2>
+          <ul>
+            {allBlogs.map((blog) => (
+              <li key={blog.id}>
+                <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+              </li>
+            ))}
+          </ul>
+          <Button href={'/blogs'} label={'全ての記事を見る'} />
+        </TopSection>
+        <TopSection>
+          <h2>「このサイトについて」カテゴリーの新着6件を取得</h2>
+          <ul>
+            {categoryBlogs.map((blog) => (
+              <li key={blog.id}>
+                <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </TopSection>
+        {/* スライダー */}
+        <TopSection>
+          <TopSlider />
+        </TopSection>
+      </TopContentsWrapper>
     </>
   )
 }
@@ -76,5 +84,14 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 Home.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
+
+const TopContentsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  padding-bottom: 3rem;
+`
+
+const TopSection = styled.div``
 
 export default Home

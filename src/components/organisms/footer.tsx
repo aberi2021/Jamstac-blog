@@ -14,6 +14,7 @@ const FooterWrap = styled.footer`
   color: #fff;
   padding: 4rem;
   margin-top: 2rem;
+  grid-area: footer;
 `
 
 export default Footer
