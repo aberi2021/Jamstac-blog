@@ -42,14 +42,9 @@ const HeaderWrap = styled.header`
   width: 100%;
 `
 const HeaderInner = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  h1 {
-    font-size: 1.5rem;
-  }
-  p {
-    text-align: right;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 const HeaderSiteName = styled.div`
   font-size: 1.5rem;
