@@ -1,41 +1,37 @@
 import React from 'react'
-import styled from 'styled-components'
+import { NextPage } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-type ListItem = {
-  string: string
-  path: string
+type Props = {
+  pageTitle: string
 }
 
-type BreadCrumbsProps = {
-  lists: ListItem[] | null | undefined
-}
-
-const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ lists }) => {
-  if (!lists) {
-    return null // リストが存在しない場合、null を返す
-  }
+const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
+  const router = useRouter()
+  const paths = decodeURI(router.asPath).substring(1).split('/')
+  let currentPath = ''
 
   return (
-    <BreadCrumbsList aria-label="現在地の階層">
-      {lists.map(({ string, path }, index) => (
-        <li key={index}>
-          {lists.length - 1 !== index ? (
-            <>
-              <a href={path}>{string}</a>
-              {'/'}
-            </>
-          ) : (
-            <span aria-current="page">{string}</span>
-          )}
-        </li>
-      ))}
-    </BreadCrumbsList>
+    <div>
+      <Link href={'/'}>トップページ</Link>
+      {paths.map((x, i) => {
+        currentPath += '/' + x
+        return (
+          <React.Fragment key={i}>
+            {'>'}
+            {i === paths.length - 1 ? (
+              <span>{pageTitle}</span>
+            ) : (
+              <Link href={currentPath} key={i}>
+                {x}
+              </Link>
+            )}
+          </React.Fragment>
+        )
+      })}
+    </div>
   )
 }
 
-const BreadCrumbsList = styled.ol`
-  display: flex;
-  font-size: 0.875rem;
-`
-
-export default BreadCrumbs
+export default BreadCrumb

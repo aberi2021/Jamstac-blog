@@ -4,7 +4,7 @@ import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import Button from '@/components/atoms/button'
-import BreadCrumbs from '@/components/molecules/breadcrumb'
+import BreadCrumb from '@/components/molecules/breadcrumb'
 import { NextSeo } from 'next-seo'
 import styled from 'styled-components'
 
@@ -23,18 +23,7 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
   return (
     <>
       <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
-      <BreadCrumbs
-        lists={[
-          {
-            string: 'トップページ',
-            path: '/',
-          },
-          {
-            string: pageTitle, // タイトルを表示する
-            path: '', // path プロパティを追加し、空文字列を指定
-          },
-        ]}
-      />
+      <BreadCrumb pageTitle={pageTitle} />
       <PageTitle>{pageTitle}</PageTitle>
       <AllBlogList>
         <ul>
@@ -73,7 +62,7 @@ const PageTitle = styled.h1`
 `
 
 const AllBlogList = styled.div`
-  margin-top: 1rem;
+  margin-top: 2rem;
 `
 
 const ButtonWrapper = styled.div`

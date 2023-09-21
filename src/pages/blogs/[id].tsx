@@ -7,7 +7,9 @@ import { client } from '@/lib/client'
 import Image from 'next/image'
 import Button from '@/components/atoms/button'
 import Link from 'next/link'
-import BreadCrumbs from '@/components/molecules/breadcrumb'
+
+//パンクズ
+import BreadCrumb from '@/components/molecules/breadcrumb'
 
 type Props = {
   data: {
@@ -37,23 +39,13 @@ type Props = {
 const BlogDetail: NextPageWithLayout<Props> = (props) => {
   const { title, content, eyecatch } = props.data
   const { prevPost, nextPost } = props
+  // const pageTitle = title
 
   return (
     <>
       <NextSeo title={`${title} | あべのサイト`} />
       <BlogPage>
-        <BreadCrumbs
-          lists={[
-            {
-              string: 'トップページ',
-              path: '/',
-            },
-            {
-              string: title, // タイトルを表示する
-              path: '', // path プロパティを追加し、空文字列を指定
-            },
-          ]}
-        />
+        <BreadCrumb pageTitle={title} />
         <BlogTitle>{title}</BlogTitle>
         {eyecatch && (
           <Image
