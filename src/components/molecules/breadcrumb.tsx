@@ -21,10 +21,14 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
           <React.Fragment key={i}>
             {'>'}
             {i === paths.length - 1 ? (
-              <span>{pageTitle}</span>
+              x === 'blogs' ? (
+                <span>ブログ</span>
+              ) : (
+                <span>{pageTitle}</span>
+              )
             ) : (
               <Link href={currentPath} key={i}>
-                {x}
+                {x === 'blogs' ? 'ブログ' : x}
               </Link>
             )}
           </React.Fragment>
