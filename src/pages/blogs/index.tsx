@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       allBlogs: allBlogs.contents,
-      pageTitle: '記事一覧', // pageTitleを適切な値に設定
+      pageTitle: '全ての記事', // pageTitleを適切な値に設定
     },
   }
 }
