@@ -1,41 +1,69 @@
 import React from 'react'
+import { NextPage } from 'next'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
-type ListItem = {
-  string: string
-  path: string
+type Props = {
+  pageTitle: string
 }
 
-type BreadCrumbsProps = {
-  lists: ListItem[] | null | undefined
-}
-
-const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ lists }) => {
-  if (!lists) {
-    return null // リストが存在しない場合、null を返す
-  }
+const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
+  const router = useRouter()
+  const paths = decodeURI(router.asPath).substring(1).split('/')
+  let currentPath = ''
 
   return (
-    <BreadCrumbsList aria-label="現在地の階層">
-      {lists.map(({ string, path }, index) => (
-        <li key={index}>
-          {lists.length - 1 !== index ? (
-            <>
-              <a href={path}>{string}</a>
-              {'/'}
-            </>
-          ) : (
-            <span aria-current="page">{string}</span>
-          )}
+    <nav aria-label="現在位置">
+      <BreadcrumbList>
+        <li>
+          <Link href={'/'}>トップページ</Link>
         </li>
-      ))}
-    </BreadCrumbsList>
+        {paths.map((x, i) => {
+          currentPath += '/' + x
+          return (
+            <React.Fragment key={i}>
+              {i === paths.length - 1 ? (
+                x === 'blogs' ? (
+                  <li>
+                    <a aria-current="page">全ての記事</a>
+                  </li>
+                ) : (
+                  <li aria-current="page">
+                    <a aria-current="page">{pageTitle}</a>
+                  </li>
+                )
+              ) : (
+                <li>
+                  <Link href={currentPath} key={i}>
+                    {x === 'blogs' ? '全ての記事' : x}
+                  </Link>
+                </li>
+              )}
+            </React.Fragment>
+          )
+        })}
+      </BreadcrumbList>
+    </nav>
   )
 }
 
-const BreadCrumbsList = styled.ol`
+const BreadcrumbList = styled.ol`
   display: flex;
-  font-size: 0.875rem;
+  flex-wrap: wrap;
+  li:not(:first-child)::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0.1rem 0.5rem 0.1rem 0;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: rotate(45deg);
+  }
+  a {
+    margin-right: 0.5rem;
+  }
 `
 
-export default BreadCrumbs
+export default BreadCrumb
