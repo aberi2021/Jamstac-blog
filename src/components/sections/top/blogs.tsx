@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import TopSection from '@/components/layout/top_section'
 import { client } from '@/lib/client'
 import { GetStaticProps } from 'next'
 import { FC } from 'react'
+import styled from 'styled-components'
 
 // ブログデータの型
 interface Blog {
@@ -16,7 +16,8 @@ type Props = {
 
 const TopBlogs: FC<Props> = ({ allBlogs }) => {
   return (
-    <TopSection label={'全体記事の新着三件を取得'}>
+    <TopSection>
+      <SectionTitle>全体記事の新着三件を取得</SectionTitle>
       <ul>
         {allBlogs.map((blog) => (
           <li key={blog.id}>
@@ -42,4 +43,9 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
+const TopSection = styled.div``
+
+const SectionTitle = styled.h2`
+  font-size: 1.5rem;
+`
 export default TopBlogs
