@@ -36,7 +36,7 @@ const AllBlogs: NextPageWithLayout<Props> = ({
         <Categories>
           {categories.map((category) => (
             <li key={category.id}>
-              <Link href={`/blogs/categories/${category.id}`}>
+              <Link href={`/blogs/category/${category.id}`}>
                 {category.name}
               </Link>
             </li>
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     endpoint: 'blogs',
     queries: { limit: 1000, orders: '-date' },
   })
-  const categoryData = await client.get({ endpoint: 'categories' })
+  const categoryData = await client.get({ endpoint: 'category' })
 
   return {
     props: {

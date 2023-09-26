@@ -55,10 +55,10 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, category }) => {
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await client.get({ endpoint: 'categories' })
+  const data = await client.get({ endpoint: 'category' })
 
   const paths = data.contents.map(
-    (content: { id: string }) => `/blogs/categories/${content.id}`
+    (content: { id: string }) => `/blogs/category/${content.id}`
   )
   return { paths, fallback: false }
 }
@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
 
   // カテゴリー名を取得し、Propsのcategoryにセット
   const categoryData = await client.get({
-    endpoint: 'categories',
+    endpoint: 'category',
     contentId: id, // カテゴリーのIDを指定
   })
 

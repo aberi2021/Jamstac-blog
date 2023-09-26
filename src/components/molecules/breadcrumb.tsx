@@ -20,7 +20,7 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
           <Link href={'/'}>トップページ</Link>
         </li>
         {paths.map((x, i) => {
-          if (x === 'categories') {
+          if (x === 'category') {
             return null // category がある場合は何も表示しない
           }
           currentPath += '/' + x
