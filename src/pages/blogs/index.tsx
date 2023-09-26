@@ -32,7 +32,7 @@ const AllBlogs: NextPageWithLayout<Props> = ({
       <BreadCrumb pageTitle={pageTitle} />
       <PageTitle>{pageTitle}</PageTitle>
       <AllBlogList>
-        <ul>
+        <Categories>
           {categories.map((category) => (
             <li key={category.id}>
               <Link href={`/blogs/categories/${category.id}`}>
@@ -40,7 +40,7 @@ const AllBlogs: NextPageWithLayout<Props> = ({
               </Link>
             </li>
           ))}
-        </ul>
+        </Categories>
         <ul>
           {allBlogs.map((blog) => (
             <li key={blog.id}>
@@ -80,6 +80,17 @@ const PageTitle = styled.h1`
 
 const AllBlogList = styled.div`
   margin-top: 2rem;
+`
+
+const Categories = styled.ul`
+  display: flex;
+  gap: 1rem;
+  li {
+    padding: 0.2rem 1rem;
+    border-radius: 8px;
+    background-color: #e2e2e2;
+    font-weight: 700;
+  }
 `
 
 const ButtonWrapper = styled.div`

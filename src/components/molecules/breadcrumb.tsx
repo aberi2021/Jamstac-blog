@@ -27,15 +27,9 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
           return (
             <React.Fragment key={i}>
               {i === paths.length - 1 ? (
-                x === 'blogs' ? (
-                  <li>
-                    <a aria-current="page">全ての記事</a>
-                  </li>
-                ) : (
-                  <li aria-current="page">
-                    <a aria-current="page">{pageTitle}</a>
-                  </li>
-                )
+                <li aria-current="page">
+                  <a aria-current="page">{pageTitle}</a>
+                </li>
               ) : (
                 <li>
                   <Link href={currentPath} key={i}>
