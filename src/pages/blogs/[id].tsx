@@ -125,7 +125,6 @@ const BlogPage = styled.div`
   margin-top: 1rem;
   max-width: 47rem;
   margin: 0 auto;
-  padding: 1rem;
 `
 
 const BlogTitle = styled.h1`

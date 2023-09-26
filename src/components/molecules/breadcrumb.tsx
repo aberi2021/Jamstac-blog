@@ -48,6 +48,7 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
 const BreadcrumbList = styled.ol`
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem 0;
   li:not(:first-child)::before {
     content: '';
     display: inline-block;
