@@ -12,20 +12,35 @@ import styled from 'styled-components'
 interface Blog {
   id: string
   title: string
+  name: string
 }
 
 type Props = {
   allBlogs: Blog[]
+  categories: { id: string; name: string }[]
   pageTitle: string // pageTitleを追加
 }
 
-const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
+const AllBlogs: NextPageWithLayout<Props> = ({
+  allBlogs,
+  categories = [],
+  pageTitle,
+}) => {
   return (
     <>
       <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
       <BreadCrumb pageTitle={pageTitle} />
       <PageTitle>{pageTitle}</PageTitle>
       <AllBlogList>
+        <ul>
+          {categories.map((category) => (
+            <li key={category.id}>
+              <Link href={`/blogs/categories/${category.id}`}>
+                {category.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <ul>
           {allBlogs.map((blog) => (
             <li key={blog.id}>
@@ -41,15 +56,17 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const allBlogs = await client.get({
     endpoint: 'blogs',
     queries: { limit: 1000, orders: '-date' },
   })
+  const categoryData = await client.get({ endpoint: 'categories' })
 
   return {
     props: {
       allBlogs: allBlogs.contents,
+      categories: categoryData.contents,
       pageTitle: '全ての記事', // pageTitleを適切な値に設定
     },
   }
