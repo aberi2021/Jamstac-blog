@@ -34,13 +34,16 @@ const AllBlogs: NextPageWithLayout<Props> = ({
       <PageTitle>{pageTitle}</PageTitle>
       <ContentsWrapper>
         <Categories>
-          {categories.map((category) => (
-            <li key={category.id}>
-              <Link href={`/blogs/category/${category.id}`}>
-                {category.name}
-              </Link>
-            </li>
-          ))}
+          <h2>カテゴリー</h2>
+          <ul>
+            {categories.map((category) => (
+              <li key={category.id}>
+                <Link href={`/blogs/category/${category.id}`}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Categories>
         <BlogList allBlogs={allBlogs} />
       </ContentsWrapper>
@@ -77,9 +80,11 @@ const ContentsWrapper = styled.div`
   margin-top: 2rem;
 `
 
-const Categories = styled.ul`
-  display: flex;
-  gap: 1rem;
+const Categories = styled.section`
+  ul {
+    display: flex;
+    gap: 1rem;
+  }
   li {
     padding: 0.2rem 1rem;
     border-radius: 8px;
@@ -87,10 +92,6 @@ const Categories = styled.ul`
     font-weight: 700;
   }
 `
-
-// const Articles = styled.ul`
-//   margin-top: 2rem;
-// `
 
 const ButtonWrapper = styled.div`
   margin-top: 2rem;

@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Link from 'next/link'
 import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import { NextPageWithLayout } from '@/pages/_app'
@@ -7,6 +6,7 @@ import BreadCrumb from '@/components/molecules/breadcrumb'
 import { NextSeo } from 'next-seo'
 import Button from '@/components/atoms/button'
 import styled from 'styled-components'
+import BlogList from '@/components/molecules/bloglist'
 
 // ブログデータの型
 type Props = {
@@ -21,35 +21,18 @@ type Props = {
 }
 
 const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, category }) => {
-  // カテゴリーに紐付いたコンテンツがない場合に表示
-  if (allBlogs.length === 0) {
-    return (
-      <>
-        <NextSeo title={category.name} />
-        <BreadCrumb pageTitle={category.name} />
-        <div>ブログコンテンツがありません</div>
-        <ButtonWrapper>
-          <Button href={'/'} label={'トップへ戻る'} />
-        </ButtonWrapper>
-      </>
-    )
-  }
   return (
-    <div>
+    <>
       <NextSeo title={category.name} />
       <BreadCrumb pageTitle={category.name} />
-      <h2>{category.name}</h2>
-      <ul>
-        {allBlogs.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <ContentsWrapper>
+        <PageTitle>{category.name}</PageTitle>
+        <BlogList allBlogs={allBlogs} />
+      </ContentsWrapper>
       <ButtonWrapper>
         <Button href={'/'} label={'トップへ戻る'} />
       </ButtonWrapper>
-    </div>
+    </>
   )
 }
 
@@ -95,6 +78,14 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
     },
   }
 }
+
+const PageTitle = styled.h1`
+  margin-top: 2rem;
+`
+
+const ContentsWrapper = styled.div`
+  margin-top: 2rem;
+`
 
 const ButtonWrapper = styled.div`
   margin-top: 2rem;
