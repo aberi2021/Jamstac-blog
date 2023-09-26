@@ -9,24 +9,24 @@ import Button from '@/components/atoms/button'
 import styled from 'styled-components'
 
 // ブログデータの型
-interface Blog {
-  id: string
-  title: string
-  name: string
-}
-
 type Props = {
-  allBlogs: Blog[]
-  pageTitle: string // pageTitleを追加
+  allBlogs: {
+    id: string
+    title: string
+    name: string
+  }[]
+  category: {
+    name: string
+  }
 }
 
-const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
+const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, category }) => {
   // カテゴリーに紐付いたコンテンツがない場合に表示
   if (allBlogs.length === 0) {
     return (
       <>
-        <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
-        <BreadCrumb pageTitle={pageTitle} />
+        <NextSeo title={category.name} />
+        <BreadCrumb pageTitle={category.name} />
         <div>ブログコンテンツがありません</div>
         <ButtonWrapper>
           <Button href={'/'} label={'トップへ戻る'} />
@@ -36,12 +36,9 @@ const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, pageTitle }) => {
   }
   return (
     <div>
-      <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
-      <BreadCrumb pageTitle={pageTitle} />
-      <h2>{pageTitle}</h2>
-      <p>
-        カテゴリー名がパンクズに出ないし、見出しにもとってこれない。今はベタうちされてるだけなのだよ。
-      </p>
+      <NextSeo title={category.name} />
+      <BreadCrumb pageTitle={category.name} />
+      <h2>{category.name}</h2>
       <ul>
         {allBlogs.map((blog) => (
           <li key={blog.id}>
@@ -85,10 +82,16 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
     queries: { limit: 1000, filters: `category[equals]${id}` },
   })
 
+  // カテゴリー名を取得し、Propsのcategoryにセット
+  const categoryData = await client.get({
+    endpoint: 'categories',
+    contentId: id, // カテゴリーのIDを指定
+  })
+
   return {
     props: {
       allBlogs: data.contents,
-      pageTitle: 'カテゴリー名を取得したいだけなのに', // pageTitleを適切な値に設定
+      category: categoryData, // カテゴリー情報をセット
     },
   }
 }
