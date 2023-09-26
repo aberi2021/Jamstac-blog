@@ -5,6 +5,7 @@ import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import Button from '@/components/atoms/button'
 import BreadCrumb from '@/components/molecules/breadcrumb'
+import BlogList from '@/components/molecules/bloglist'
 import { NextSeo } from 'next-seo'
 import styled from 'styled-components'
 
@@ -28,10 +29,10 @@ const AllBlogs: NextPageWithLayout<Props> = ({
 }) => {
   return (
     <>
-      <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
+      <NextSeo title={pageTitle} />
       <BreadCrumb pageTitle={pageTitle} />
       <PageTitle>{pageTitle}</PageTitle>
-      <AllBlogList>
+      <ContentsWrapper>
         <Categories>
           {categories.map((category) => (
             <li key={category.id}>
@@ -41,14 +42,8 @@ const AllBlogs: NextPageWithLayout<Props> = ({
             </li>
           ))}
         </Categories>
-        <ul>
-          {allBlogs.map((blog) => (
-            <li key={blog.id}>
-              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </AllBlogList>
+        <BlogList allBlogs={allBlogs} />
+      </ContentsWrapper>
       <ButtonWrapper>
         <Button href={'/'} label={'トップへ戻る'} />
       </ButtonWrapper>
@@ -78,7 +73,7 @@ const PageTitle = styled.h1`
   margin-top: 2rem;
 `
 
-const AllBlogList = styled.div`
+const ContentsWrapper = styled.div`
   margin-top: 2rem;
 `
 
@@ -92,6 +87,10 @@ const Categories = styled.ul`
     font-weight: 700;
   }
 `
+
+// const Articles = styled.ul`
+//   margin-top: 2rem;
+// `
 
 const ButtonWrapper = styled.div`
   margin-top: 2rem;
