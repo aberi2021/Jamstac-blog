@@ -113,7 +113,8 @@ const SectionTitle = styled.h2`
 `
 
 const ButtonWrapper = styled.div`
-  margin-top: 1rem;
+  margin: 2rem;
+  text-align: center;
 `
 
 export default Home

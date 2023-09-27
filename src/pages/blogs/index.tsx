@@ -101,6 +101,7 @@ const Categories = styled.section`
 `
 
 const ButtonWrapper = styled.div`
+  text-align: center;
   margin-top: 2rem;
 `
 
