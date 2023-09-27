@@ -8,6 +8,7 @@ import TopSlider from '@/components/sections/top/slider'
 import Button from '@/components/atoms/button'
 import '@/styles/Home.module.css'
 import styled from 'styled-components'
+import BlogList from '@/components/molecules/bloglist'
 
 // ブログデータの型
 interface Blog {
@@ -31,13 +32,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
         <TopSection>
           <SectionTitle>新着記事6件を取得</SectionTitle>
           <SectionContents>
-            <ul>
-              {allBlogs.map((blog) => (
-                <li key={blog.id}>
-                  <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-                </li>
-              ))}
-            </ul>
+            <BlogList allBlogs={allBlogs} />
             <ButtonWrapper>
               <Button href={'/blogs'} label={'全ての記事を見る'} />
             </ButtonWrapper>
@@ -55,6 +50,13 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
                 </li>
               ))}
             </ul>
+            <ButtonWrapper>
+              <Button
+                href={`/blogs/category/lbmyk28j226`}
+                label={`このカテゴリーの記事をもっと読む`}
+                aria-label="このサイトについての記事をもっと読む"
+              />
+            </ButtonWrapper>
           </SectionContents>
         </TopSection>
         {/* スライダー */}

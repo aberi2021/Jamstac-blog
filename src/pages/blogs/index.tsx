@@ -14,6 +14,13 @@ interface Blog {
   id: string
   title: string
   name: string
+  content: string
+  createdAt: string
+  eyecatch?: {
+    url: string
+    height: number
+    width: number
+  }
 }
 
 type Props = {
