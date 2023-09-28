@@ -5,6 +5,7 @@ import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import Button from '@/components/atoms/button'
 import BreadCrumb from '@/components/molecules/breadcrumb'
+import BlogList from '@/components/molecules/bloglist'
 import { NextSeo } from 'next-seo'
 import styled from 'styled-components'
 
@@ -12,7 +13,15 @@ import styled from 'styled-components'
 interface Blog {
   id: string
   title: string
-  name: string
+  content: string
+  createdAt: string
+  publishedAt: string
+  eyecatch?: {
+    url: string
+    height: number
+    width: number
+  }
+  datetime: string
 }
 
 type Props = {
@@ -28,27 +37,24 @@ const AllBlogs: NextPageWithLayout<Props> = ({
 }) => {
   return (
     <>
-      <NextSeo title={pageTitle} /> {/* pageTitleを使用 */}
+      <NextSeo title={pageTitle} />
       <BreadCrumb pageTitle={pageTitle} />
       <PageTitle>{pageTitle}</PageTitle>
-      <AllBlogList>
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id}>
-              <Link href={`/blogs/categories/${category.id}`}>
-                {category.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {allBlogs.map((blog) => (
-            <li key={blog.id}>
-              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </AllBlogList>
+      <ContentsWrapper>
+        <Categories>
+          <h2>カテゴリー</h2>
+          <ul>
+            {categories.map((category) => (
+              <li key={category.id}>
+                <Link href={`/blogs/category/${category.id}`}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Categories>
+        <BlogList allBlogs={allBlogs} />
+      </ContentsWrapper>
       <ButtonWrapper>
         <Button href={'/'} label={'トップへ戻る'} />
       </ButtonWrapper>
@@ -61,7 +67,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     endpoint: 'blogs',
     queries: { limit: 1000, orders: '-date' },
   })
-  const categoryData = await client.get({ endpoint: 'categories' })
+  const categoryData = await client.get({ endpoint: 'category' })
 
   return {
     props: {
@@ -78,11 +84,25 @@ const PageTitle = styled.h1`
   margin-top: 2rem;
 `
 
-const AllBlogList = styled.div`
+const ContentsWrapper = styled.div`
   margin-top: 2rem;
 `
 
+const Categories = styled.section`
+  ul {
+    display: flex;
+    gap: 1rem;
+  }
+  li {
+    padding: 0.2rem 1rem;
+    border-radius: 8px;
+    background-color: #e2e2e2;
+    font-weight: 700;
+  }
+`
+
 const ButtonWrapper = styled.div`
+  text-align: center;
   margin-top: 2rem;
 `
 

@@ -20,22 +20,16 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
           <Link href={'/'}>トップページ</Link>
         </li>
         {paths.map((x, i) => {
-          if (x === 'categories') {
+          if (x === 'category') {
             return null // category がある場合は何も表示しない
           }
           currentPath += '/' + x
           return (
             <React.Fragment key={i}>
               {i === paths.length - 1 ? (
-                x === 'blogs' ? (
-                  <li>
-                    <a aria-current="page">全ての記事</a>
-                  </li>
-                ) : (
-                  <li aria-current="page">
-                    <a aria-current="page">{pageTitle}</a>
-                  </li>
-                )
+                <li aria-current="page">
+                  <a aria-current="page">{pageTitle}</a>
+                </li>
               ) : (
                 <li>
                   <Link href={currentPath} key={i}>
@@ -54,6 +48,7 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
 const BreadcrumbList = styled.ol`
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem 0;
   li:not(:first-child)::before {
     content: '';
     display: inline-block;
