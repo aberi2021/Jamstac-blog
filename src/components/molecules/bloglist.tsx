@@ -2,6 +2,7 @@ import type { NextPageWithLayout } from '@/pages/_app'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Image from 'next/image'
+import FormatDate from '@/components/molecules/datetime'
 
 // ブログデータの型
 interface Blog {
@@ -9,11 +10,13 @@ interface Blog {
   title: string
   content: string
   createdAt: string
+  publishedAt: string
   eyecatch?: {
     url: string
     height: number
     width: number
   }
+  datetime: string
 }
 
 type Props = {
@@ -35,6 +38,7 @@ const BlogList: NextPageWithLayout<Props> = ({ allBlogs }) => {
               />
             </ImageWrapper>
             <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+            <FormatDate date={blog.publishedAt} />
           </li>
         ))}
       </Articles>
