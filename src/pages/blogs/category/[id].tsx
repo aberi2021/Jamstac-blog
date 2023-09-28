@@ -13,7 +13,15 @@ type Props = {
   allBlogs: {
     id: string
     title: string
-    name: string
+    content: string
+    createdAt: string
+    publishedAt: string
+    eyecatch?: {
+      url: string
+      height: number
+      width: number
+    }
+    datetime: string
   }[]
   category: {
     name: string

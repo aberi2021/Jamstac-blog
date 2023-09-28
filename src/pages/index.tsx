@@ -14,6 +14,15 @@ import BlogList from '@/components/molecules/bloglist'
 interface Blog {
   id: string
   title: string
+  content: string
+  createdAt: string
+  publishedAt: string
+  eyecatch?: {
+    url: string
+    height: number
+    width: number
+  }
+  datetime: string
 }
 
 type Props = {

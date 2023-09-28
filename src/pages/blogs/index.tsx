@@ -13,14 +13,15 @@ import styled from 'styled-components'
 interface Blog {
   id: string
   title: string
-  name: string
   content: string
   createdAt: string
+  publishedAt: string
   eyecatch?: {
     url: string
     height: number
     width: number
   }
+  datetime: string
 }
 
 type Props = {
