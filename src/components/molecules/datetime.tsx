@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import { FC } from 'react'
+import styled from 'styled-components'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -21,8 +22,13 @@ const FormatDate: FC<Props> = ({ date }) => {
 
   return (
     <>
-      <time dateTime={timeDate}>{formattedDate}</time>
+      <Time dateTime={timeDate}>{formattedDate}</Time>
     </>
   )
 }
+
+const Time = styled.time`
+  display: block;
+`
+
 export default FormatDate
