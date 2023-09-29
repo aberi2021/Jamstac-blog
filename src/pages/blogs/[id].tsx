@@ -51,7 +51,9 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
       <BlogPage>
         <BreadCrumb pageTitle={title} category={category} />
         <BlogTitle>{title}</BlogTitle>
-        <Category>{category.name}</Category>
+        <Category>
+          {category ? category.name : 'カテゴリーがありません'}
+        </Category>
         {eyecatch && (
           <Image
             src={eyecatch.url}
