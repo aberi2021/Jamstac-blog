@@ -68,6 +68,12 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
             </ButtonWrapper>
           </SectionContents>
         </TopSection>
+        <TopSection>
+          <SectionTitle>私について</SectionTitle>
+          <SectionContents>
+            <Link href={'/about'}>ABOUT</Link>
+          </SectionContents>
+        </TopSection>
         {/* スライダー */}
         <TopSection>
           <TopSlider />
