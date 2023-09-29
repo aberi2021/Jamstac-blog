@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import type { NextPageWithLayout } from '@/pages/_app'
 import DefaultLayout from '@/components/layout/default-layout'
 import { client } from '@/lib/client'
+import Button from '@/components/atoms/button'
+//パンクズ
+import BreadCrumb from '@/components/molecules/breadcrumb'
 
 type Props = {
   aboutData: {
@@ -19,10 +22,14 @@ const About: NextPageWithLayout<Props> = ({ aboutData }) => {
     <>
       <NextSeo title={`${title} | あべのサイト`} />
       <AboutPage>
+        <BreadCrumb pageTitle={title} />
         <AboutTitle>{title}</AboutTitle>
         <ContentsWrapper>
           <div dangerouslySetInnerHTML={{ __html: context }}></div>
         </ContentsWrapper>
+        <ButtonWrapper>
+          <Button href={'/'} label={'トップへ戻る'} />
+        </ButtonWrapper>
       </AboutPage>
     </>
   )
@@ -53,22 +60,27 @@ const AboutTitle = styled.h1`
 
 const ContentsWrapper = styled.div`
   margin-top: 1rem;
-  pre,
-  code {
-    background-color: #000;
-    color: #fff;
-    font-size: 1rem;
-  }
-  pre {
-    padding: 1rem;
+  h2 {
     margin-top: 1rem;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow: auto;
   }
-  p > code {
-    padding: 0 0.5rem;
+  h3 {
+    margin-top: 1rem;
+    font-weight: 700;
   }
+  ul {
+    list-style: disc;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+  }
+  ul + p,
+  ol + p {
+    margin-top: 1rem;
+  }
+`
+
+const ButtonWrapper = styled.div`
+  text-align: center;
+  margin-top: 2rem;
 `
 
 export default About
