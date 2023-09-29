@@ -6,12 +6,15 @@ import styled from 'styled-components'
 
 type Props = {
   pageTitle: string
+  category?: {
+    name: string
+    id: string // カテゴリーのIDを追加
+  }
 }
 
-const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
+const BreadCrumb: NextPage<Props> = ({ pageTitle, category }) => {
   const router = useRouter()
   const paths = decodeURI(router.asPath).substring(1).split('/')
-  let currentPath = ''
 
   return (
     <nav aria-label="現在位置">
@@ -20,24 +23,22 @@ const BreadCrumb: NextPage<Props> = ({ pageTitle }) => {
           <Link href={'/'}>トップページ</Link>
         </li>
         {paths.map((x, i) => {
-          if (x === 'category') {
-            return null // category がある場合は何も表示しない
-          }
-          currentPath += '/' + x
+          if (x === 'category') return null // category がある場合は何も表示しない
+          const currentPath = '/' + paths.slice(0, i + 1).join('/')
           return (
-            <React.Fragment key={i}>
+            <li key={i}>
               {i === paths.length - 1 ? (
-                <li aria-current="page">
-                  <a aria-current="page">{pageTitle}</a>
-                </li>
+                <a aria-current="page">{pageTitle}</a>
+              ) : i === paths.length - 2 && category ? (
+                <Link href={`/blogs/category/${category.id}`}>
+                  {category.name}
+                </Link>
               ) : (
-                <li>
-                  <Link href={currentPath} key={i}>
-                    {x === 'blogs' ? '全ての記事' : x}
-                  </Link>
-                </li>
+                <Link href={currentPath}>
+                  {x === 'blogs' ? '全ての記事' : x}
+                </Link>
               )}
-            </React.Fragment>
+            </li>
           )
         })}
       </BreadcrumbList>

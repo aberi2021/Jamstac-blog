@@ -25,6 +25,10 @@ type Props = {
     revisedAt: string
     title: string
     updatedAt: string
+    category: {
+      name: string
+      id: string
+    }
   }
   prevPost: {
     id: string
@@ -37,7 +41,7 @@ type Props = {
 }
 
 const BlogDetail: NextPageWithLayout<Props> = (props) => {
-  const { title, content, eyecatch } = props.data
+  const { title, content, eyecatch, category } = props.data
   const { prevPost, nextPost } = props
   // const pageTitle = title
 
@@ -45,8 +49,11 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
     <>
       <NextSeo title={`${title} | あべのサイト`} />
       <BlogPage>
-        <BreadCrumb pageTitle={title} />
+        <BreadCrumb pageTitle={title} category={category} />
         <BlogTitle>{title}</BlogTitle>
+        <Category>
+          {category ? category.name : 'カテゴリーがありません'}
+        </Category>
         {eyecatch && (
           <Image
             src={eyecatch.url}
@@ -130,6 +137,12 @@ const BlogPage = styled.div`
 const BlogTitle = styled.h1`
   font-size: 2rem;
   margin-top: 2rem;
+`
+
+const Category = styled.p`
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #000;
+  display: inline-block;
 `
 
 const ContentsWrapper = styled.div`
