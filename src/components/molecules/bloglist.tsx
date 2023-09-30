@@ -29,34 +29,29 @@ const BlogList: NextPageWithLayout<Props> = ({ allBlogs }) => {
       <Articles>
         {allBlogs.map((blog) => (
           <li key={blog.id}>
-            <ImageWrapper>
-              <Image
-                src={blog.eyecatch?.url || '/NoImage.png'} // 代替の画像パスを指定
-                width={1200}
-                height={630}
-                alt={''}
-              />
-            </ImageWrapper>
-            <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-            <FormatDate date={blog.publishedAt} />
+            <Link href={`/blogs/${blog.id}`}>
+              <ImageWrapper>
+                <Image
+                  src={blog.eyecatch?.url || '/NoImage.png'} // 代替の画像パスを指定
+                  width={1200}
+                  height={630}
+                  alt={''}
+                />
+              </ImageWrapper>
+              <TextWrapper>
+                <CardCategory>
+                  <CategoryName>カテゴリー名</CategoryName>
+                </CardCategory>
+                <CardTitle>{blog.title}</CardTitle>
+                <FormatDate date={blog.publishedAt} />
+              </TextWrapper>
+            </Link>
           </li>
         ))}
       </Articles>
     </>
   )
 }
-
-const Articles = styled.ul`
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  li {
-    background-color: #ededed;
-    border: solid 1px #000;
-    padding: 1rem;
-  }
-`
 
 const ImageWrapper = styled.div`
   img {
@@ -65,6 +60,66 @@ const ImageWrapper = styled.div`
     object-fit: cover;
     aspect-ratio: 1200/630;
     background-color: #fff;
+  }
+`
+
+const TextWrapper = styled.div`
+  padding: 1rem;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5rem;
+  time {
+    align-self: end;
+    justify-self: start;
+  }
+`
+
+const CardCategory = styled.div``
+
+const CategoryName = styled.span`
+  border-radius: 6px;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+`
+
+const CardTitle = styled.p`
+  && {
+    font-weight: 700;
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+`
+
+const Articles = styled.ul`
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  li {
+    border: solid 3px #000;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 5px 5px 0 #000;
+  }
+  li:hover {
+    box-shadow: 5px 5px 0 #b7ff00;
+  }
+  a {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    text-decoration: none;
+    color: #000;
+  }
+  a:hover {
+    /* ${CardTitle} {
+      border-bottom: 3px solid #b7ff00;
+    } */
   }
 `
 
