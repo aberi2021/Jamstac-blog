@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Image from 'next/image'
 import FormatDate from '@/components/molecules/datetime'
+import VisuallyHidden from '../atoms/visuallyhidden'
 
 // ブログデータの型
 interface Blog {
@@ -29,23 +30,22 @@ const BlogList: NextPageWithLayout<Props> = ({ allBlogs }) => {
       <Articles>
         {allBlogs.map((blog) => (
           <li key={blog.id}>
-            <Link href={`/blogs/${blog.id}`}>
-              <ImageWrapper>
-                <Image
-                  src={blog.eyecatch?.url || '/NoImage.png'} // 代替の画像パスを指定
-                  width={1200}
-                  height={630}
-                  alt={''}
-                />
-              </ImageWrapper>
-              <TextWrapper>
-                <CardCategory>
-                  <CategoryName>カテゴリー名</CategoryName>
-                </CardCategory>
-                <CardTitle>{blog.title}</CardTitle>
-                <FormatDate date={blog.publishedAt} />
-              </TextWrapper>
-            </Link>
+            <ImageWrapper>
+              <Image
+                src={blog.eyecatch?.url || '/NoImage.png'} // 代替の画像パスを指定
+                width={1200}
+                height={630}
+                alt={''}
+              />
+            </ImageWrapper>
+            <TextWrapper>
+              <CardCategory>
+                <VisuallyHidden label="カテゴリー名" />
+                <CategoryName>カテゴリー名</CategoryName>
+              </CardCategory>
+              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+              <FormatDate date={blog.publishedAt} />
+            </TextWrapper>
           </li>
         ))}
       </Articles>
@@ -101,25 +101,34 @@ const Articles = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   li {
+    display: grid;
+    grid-template-rows: auto 1fr;
     border: solid 3px #000;
     overflow: hidden;
     border-radius: 22px;
     box-shadow: 5px 5px 0 #000;
+    position: relative;
   }
   li:hover {
     box-shadow: 5px 5px 0 #b7ff00;
-  }
-  a {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100%;
-    text-decoration: none;
-    color: #000;
-  }
-  a:hover {
     /* ${CardTitle} {
       border-bottom: 3px solid #b7ff00;
     } */
+  }
+  li:has(a:focus) {
+    box-shadow: 5px 5px 0 #b7ff00;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 `
 
