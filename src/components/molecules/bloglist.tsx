@@ -43,7 +43,9 @@ const BlogList: NextPageWithLayout<Props> = ({ allBlogs }) => {
                 <VisuallyHidden label="カテゴリー名" />
                 <CategoryName>カテゴリー名</CategoryName>
               </CardCategory>
-              <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+              <CardTitle>
+                <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+              </CardTitle>
               <FormatDate date={blog.publishedAt} />
             </TextWrapper>
           </li>
