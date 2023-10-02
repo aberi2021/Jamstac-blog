@@ -20,6 +20,8 @@ const StyledBtn = styled(Link)`
   border-radius: 25px;
   background: #333;
   color: #fff;
+  :hover {
+  }
 `
 
 export default Button

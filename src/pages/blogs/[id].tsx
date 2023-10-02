@@ -170,6 +170,9 @@ const PrevNextPosts = styled.div`
   padding: 2rem;
   margin-top: 2rem;
   border: 1px solid #333;
+  p:first-child {
+    margin-top: 0;
+  }
 `
 
 const ButtonWrapper = styled.div`
