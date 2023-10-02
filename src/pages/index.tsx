@@ -4,6 +4,7 @@ import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import Link from 'next/link'
 import TopAboutSite from '@/components/sections/top/about_site'
+import TopAboutMe from '@/components/sections/top/about_me'
 import TopSlider from '@/components/sections/top/slider'
 import Button from '@/components/atoms/button'
 import '@/styles/Home.module.css'
@@ -79,10 +80,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           </SectionContents>
         </TopSection>
         <TopSection>
-          <SectionTitle>わたしについて🙋‍♀️</SectionTitle>
-          <SectionContents>
-            <Link href={'/about'}>ABOUT</Link>
-          </SectionContents>
+          <TopAboutMe />
         </TopSection>
         {/* スライダー */}
         <TopSection>
