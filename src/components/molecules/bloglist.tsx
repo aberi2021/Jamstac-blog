@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Image from 'next/image'
 import FormatDate from '@/components/molecules/datetime'
-import VisuallyHidden from '../atoms/visuallyhidden'
+import VisuallyHidden from '@/components/atoms/visuallyhidden'
 
 // ブログデータの型
 interface Blog {
