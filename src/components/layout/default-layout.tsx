@@ -2,6 +2,21 @@ import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
 //header.tsx footer.tsxを読み込む
 
+import { Roboto, Monomaniac_One } from 'next/font/google'
+
+//GoogleFont
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-roboto',
+})
+const mono = Monomaniac_One({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+})
+
 import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
@@ -12,7 +27,7 @@ type Props = {
 const DefaultLayout: FC<Props> = (props) => {
   //:props
   return (
-    <BodyWrapper>
+    <BodyWrapper className={`${roboto.variable} ${mono.variable}`}>
       <Header />
       <Main>{props.children}</Main>
       <Footer />
@@ -25,6 +40,11 @@ const BodyWrapper = styled.div`
   display: grid;
   grid-template: 'header' auto 'contents' 1fr 'footer' auto/100%;
   min-height: 100vh;
+  font-family: var(--font-roboto), sans-serif;
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 `
 
 const Main = styled.main`

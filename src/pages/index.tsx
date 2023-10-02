@@ -10,6 +10,15 @@ import '@/styles/Home.module.css'
 import styled from 'styled-components'
 import BlogList from '@/components/molecules/bloglist'
 
+// import { Monomaniac_One } from 'next/font/google'
+
+// //GoogleFont
+// const mono = Monomaniac_One({
+//   weight: ['400'],
+//   subsets: ['latin'],
+//   display: 'swap',
+// })
+
 // ブログデータの型
 interface Blog {
   id: string
@@ -42,7 +51,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           <TopAboutSite />
         </TopSection>
         <TopSection>
-          <SectionTitle>新着記事6件を取得</SectionTitle>
+          <SectionTitle>ブログだよ😊</SectionTitle>
           <SectionContents>
             <BlogList allBlogs={allBlogs} />
             <ButtonWrapper>
@@ -51,9 +60,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           </SectionContents>
         </TopSection>
         <TopSection>
-          <SectionTitle>
-            「このサイトについて」カテゴリーの新着6件を取得
-          </SectionTitle>
+          <SectionTitle>「このサイトについて」カテゴリーの記事</SectionTitle>
           <SectionContents>
             <ul>
               {categoryBlogs.map((blog) => (
@@ -72,7 +79,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           </SectionContents>
         </TopSection>
         <TopSection>
-          <SectionTitle>私について</SectionTitle>
+          <SectionTitle>わたしについて</SectionTitle>
           <SectionContents>
             <Link href={'/about'}>ABOUT</Link>
           </SectionContents>
@@ -127,7 +134,11 @@ const SectionContents = styled.div`
 `
 
 const SectionTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 4rem;
+  text-align: center;
+  font-family: vdl-megamarupop-futoline, sans-serif;
+  font-weight: 400;
+  text-shadow: 4px 3px 0 #b7ff00;
 `
 
 const ButtonWrapper = styled.div`
