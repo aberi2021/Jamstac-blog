@@ -149,9 +149,10 @@ const ContentsWrapper = styled.div`
   margin-top: 1rem;
   pre,
   code {
-    background-color: #000;
-    color: #fff;
+    background-color: #ddd;
+    color: #000;
     font-size: 1rem;
+    border-radius: 4px;
   }
   pre {
     padding: 1rem;
@@ -161,7 +162,7 @@ const ContentsWrapper = styled.div`
     overflow: auto;
   }
   p > code {
-    padding: 0 0.5rem;
+    padding: 0 0.2em;
   }
 `
 
