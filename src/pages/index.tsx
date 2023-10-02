@@ -79,7 +79,7 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           </SectionContents>
         </TopSection>
         <TopSection>
-          <SectionTitle>わたしについて</SectionTitle>
+          <SectionTitle>わたしについて🙋‍♀️</SectionTitle>
           <SectionContents>
             <Link href={'/about'}>ABOUT</Link>
           </SectionContents>

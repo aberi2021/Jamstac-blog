@@ -2,19 +2,13 @@ import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
 //header.tsx footer.tsxを読み込む
 
-import { Roboto, Monomaniac_One } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 
 //GoogleFont
 const roboto = Roboto({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-roboto',
-})
-const mono = Monomaniac_One({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-mono',
 })
 
 import { FC, ReactNode } from 'react'
@@ -27,7 +21,7 @@ type Props = {
 const DefaultLayout: FC<Props> = (props) => {
   //:props
   return (
-    <BodyWrapper className={`${roboto.variable} ${mono.variable}`}>
+    <BodyWrapper className={`${roboto.variable}`}>
       <Header />
       <Main>{props.children}</Main>
       <Footer />

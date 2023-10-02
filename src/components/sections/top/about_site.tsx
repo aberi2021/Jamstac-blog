@@ -4,7 +4,7 @@ const TopAboutSite = () => {
   //:props
   return (
     <>
-      <SectionTitle>このサイトについて</SectionTitle>
+      <SectionTitle>このサイトについて💻</SectionTitle>
       <SectionContents>
         <p>
           このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
@@ -33,7 +33,11 @@ const TopAboutSite = () => {
 }
 
 const SectionTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 4rem;
+  text-align: center;
+  font-family: vdl-megamarupop-futoline, sans-serif;
+  font-weight: 400;
+  text-shadow: 4px 3px 0 #b7ff00;
 `
 
 const SectionContents = styled.div`
