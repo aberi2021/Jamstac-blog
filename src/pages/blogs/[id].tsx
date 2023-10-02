@@ -162,7 +162,8 @@ const ContentsWrapper = styled.div`
     overflow: auto;
   }
   p > code {
-    padding: 0 0.2em;
+    padding: 0 0.4em;
+    margin: 0 0.1em;
   }
 `
 

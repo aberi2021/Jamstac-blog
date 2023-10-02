@@ -19,8 +19,14 @@ const StyledBtn = styled(Link)`
   height: 50px;
   border-radius: 25px;
   background: #333;
-  color: #fff;
-  :hover {
+  border: 3px solid #333;
+  && {
+    color: #fff;
+    font-weight: 700;
+  }
+  &:hover {
+    background-color: #b7ff00;
+    color: #000;
   }
 `
 
