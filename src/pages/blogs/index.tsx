@@ -22,6 +22,9 @@ interface Blog {
     width: number
   }
   datetime: string
+  category: {
+    name: string
+  }
 }
 
 type Props = {

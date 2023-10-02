@@ -18,6 +18,9 @@ interface Blog {
     width: number
   }
   datetime: string
+  category: {
+    name: string
+  }
 }
 
 type Props = {
@@ -41,7 +44,9 @@ const BlogList: NextPageWithLayout<Props> = ({ allBlogs }) => {
             <TextWrapper>
               <CardCategory>
                 <VisuallyHidden label="カテゴリー名" />
-                <CategoryName>カテゴリー名</CategoryName>
+                <CategoryName>
+                  {blog.category && blog.category.name}
+                </CategoryName>
               </CardCategory>
               <CardTitle>
                 <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
