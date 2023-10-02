@@ -8,24 +8,26 @@ import Button from '@/components/atoms/button'
 import styled from 'styled-components'
 import BlogList from '@/components/molecules/bloglist'
 
-// ブログデータの型
-type Props = {
-  allBlogs: {
-    id: string
-    title: string
-    content: string
-    createdAt: string
-    publishedAt: string
-    eyecatch?: {
-      url: string
-      height: number
-      width: number
-    }
-    datetime: string
-  }[]
+type Blog = {
+  id: string
+  title: string
+  content: string
+  createdAt: string
+  publishedAt: string
+  eyecatch?: {
+    url: string
+    height: number
+    width: number
+  }
+  datetime: string
   category: {
     name: string
   }
+}
+
+type Props = {
+  allBlogs: Blog[]
+  category: Blog['category']
 }
 
 const AllBlogs: NextPageWithLayout<Props> = ({ allBlogs, category }) => {
