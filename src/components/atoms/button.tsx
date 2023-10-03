@@ -21,7 +21,7 @@ const StyledBtn = styled(Link)`
   background: #333;
   border: 3px solid #333;
   && {
-    color: #fff;
+    color: #f9f9f9;
     font-weight: 700;
   }
   &:hover {

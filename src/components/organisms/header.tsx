@@ -12,12 +12,16 @@ const Header: FC = () => {
   // トップページの場合、h1要素をdiv要素に変更
   const headerContent =
     currentPath === '/' ? (
-      <h1>
-        <Link href={'/'}>あべのサイト</Link>
-      </h1>
+      <HeaderSiteName>
+        <h1>
+          <Link href={'/'}>あべのサイト</Link>
+        </h1>
+      </HeaderSiteName>
     ) : (
       <HeaderSiteName>
-        <Link href={'/'}>あべのサイト</Link>
+        <span>
+          <Link href={'/'}>あべのサイト</Link>
+        </span>
       </HeaderSiteName>
     )
 
@@ -25,30 +29,62 @@ const Header: FC = () => {
     <HeaderWrap>
       <HeaderInner>
         {headerContent}
-        <p>
-          <a href={'https://twitter.com/a_be_ri'}>X(Twitter)</a>
-        </p>
+        <HeaderContents>
+          <li>
+            <span>
+              <a href={'https://twitter.com/a_be_ri'}>X(Twitter)</a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a href={'https://twitter.com/a_be_ri'}>メニュー</a>
+            </span>
+          </li>
+        </HeaderContents>
       </HeaderInner>
     </HeaderWrap>
   )
 }
 
 const HeaderWrap = styled.header`
-  padding: 20px 40px;
   background: #fff;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #333;
   position: fixed;
   z-index: 100;
   width: 100%;
+  font-family: vdl-megamarupop-futoline;
+  background-color: #f9f9f9;
 `
 const HeaderInner = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
 `
 const HeaderSiteName = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
+  background-color: #b7ff00;
+  padding: 0 20px;
+  border-right: 2px solid #333;
+  h1,
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+`
+
+const HeaderContents = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  li {
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    background-color: #b7ff00;
+    border-left: 2px solid #333;
+    display: grid;
+    place-content: center;
+  }
 `
 
 export default Header

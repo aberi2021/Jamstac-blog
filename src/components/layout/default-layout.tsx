@@ -30,6 +30,7 @@ const DefaultLayout: FC<Props> = (props) => {
 }
 
 const BodyWrapper = styled.div`
+  background-color: #f9f9f9;
   flex-direction: column;
   display: grid;
   grid-template: 'header' auto 'contents' 1fr 'footer' auto/100%;
