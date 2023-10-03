@@ -48,8 +48,9 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
   return (
     <>
       <NextSeo title={`${title} | あべのサイト`} />
-      <BlogPage>
-        <BreadCrumb pageTitle={title} category={category} />
+      {/* <BlogPage> */}
+      <BreadCrumb pageTitle={title} category={category} />
+      <Article>
         <BlogTitle>{title}</BlogTitle>
         <Category>
           {category ? category.name : 'カテゴリーがありません'}
@@ -81,10 +82,11 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
             </p>
           )}
         </PrevNextPosts>
-        <ButtonWrapper>
-          <Button href={'/'} label={'トップへ戻る'} />
-        </ButtonWrapper>
-      </BlogPage>
+      </Article>
+      <ButtonWrapper>
+        <Button href={'/'} label={'トップへ戻る'} />
+      </ButtonWrapper>
+      {/* </BlogPage> */}
     </>
   )
 }
@@ -128,10 +130,17 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 BlogDetail.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
 
-const BlogPage = styled.div`
-  margin-top: 1rem;
-  max-width: 47rem;
-  margin: 0 auto;
+// const BlogPage = styled.div`
+//   margin-top: 1rem;
+//   max-width: 47rem;
+//   margin: 0 auto;
+// `
+
+const Article = styled.article`
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border: 2px solid #333;
+  border-radius: 20px;
 `
 
 const BlogTitle = styled.h1`
