@@ -29,7 +29,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             __html: `
             (function(d) {
                 var config = {
-                  kitId: '${process.env.NEXT_PUBLIC_ADOBE_KITID}',
+                  kitId: 'bhb0ufp',
                   scriptTimeout: 3000,
                   async: true
                 },
