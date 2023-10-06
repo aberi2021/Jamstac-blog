@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router' // useRouterをインポート
 
-import { colorObj } from '@/pages/color'
+import { colorObj } from '@/styles/color'
 
 const Header: FC = () => {
   const router = useRouter() // useRouterを初期化
@@ -31,7 +31,7 @@ const Header: FC = () => {
     <HeaderWrap>
       <HeaderInner>
         {headerLogo}
-        <HeaderChanges>
+        {/* <HeaderChanges>
           <li>
             <span>
               <a href={'https://twitter.com/a_be_ri'}>文字を変える</a>
@@ -42,7 +42,7 @@ const Header: FC = () => {
               <a href={'https://twitter.com/a_be_ri'}>色を変える</a>
             </span>
           </li>
-        </HeaderChanges>
+        </HeaderChanges> */}
         <HeaderContents>
           <li>
             <span>
@@ -96,9 +96,9 @@ const HeaderSiteName = styled.div`
   }
 `
 
-const HeaderChanges = styled.ul`
-  display: flex;
-`
+// const HeaderChanges = styled.ul`
+//   display: flex;
+// `
 
 const HeaderContents = styled.ul`
   display: grid;

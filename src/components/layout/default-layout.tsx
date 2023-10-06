@@ -1,6 +1,6 @@
 import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
-import { colorObj } from '@/pages/color'
+import { colorObj } from '@/styles/color'
 
 import { Roboto } from 'next/font/google'
 

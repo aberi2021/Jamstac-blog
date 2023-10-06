@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { colorObj } from '@/pages/color'
+import { colorObj } from '@/styles/color'
 
 type Props = {
   label: string
