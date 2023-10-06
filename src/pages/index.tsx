@@ -136,7 +136,6 @@ const SectionTitle = styled.h2`
   text-align: center;
   font-family: vdl-megamarupop-futoline, sans-serif;
   font-weight: 400;
-  text-shadow: 4px 3px 0 #b7ff00;
 `
 
 const ButtonWrapper = styled.div`

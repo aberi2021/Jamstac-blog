@@ -1,6 +1,6 @@
 import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
-//header.tsx footer.tsxを読み込む
+import { colorObj } from '@/pages/color'
 
 import { Roboto } from 'next/font/google'
 
@@ -30,7 +30,7 @@ const DefaultLayout: FC<Props> = (props) => {
 }
 
 const BodyWrapper = styled.div`
-  background-color: #f9f9f9;
+  background-color: ${colorObj.baseGray};
   flex-direction: column;
   display: grid;
   grid-template: 'header' auto 'contents' 1fr 'footer' auto/100%;
@@ -39,6 +39,11 @@ const BodyWrapper = styled.div`
   a {
     color: #000;
     text-decoration: none;
+  }
+  a:focus,
+  button:focus {
+    outline: 4px solid #ff6110;
+    outline-offset: 4px;
   }
 `
 
