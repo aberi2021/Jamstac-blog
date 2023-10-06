@@ -40,8 +40,8 @@ const BodyWrapper = styled.div`
     color: #000;
     text-decoration: none;
   }
-  a:focus,
-  button:focus {
+  a:focus-visible,
+  button:focus-visible {
     outline: 4px solid #ff6110;
     outline-offset: 4px;
   }

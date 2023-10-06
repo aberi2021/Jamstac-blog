@@ -43,18 +43,31 @@ const Header: FC = () => {
             </span>
           </li>
         </HeaderChanges> */}
-        <HeaderContents>
-          <li>
-            <span>
-              <a href={'https://twitter.com/a_be_ri'}>X(Twitter)</a>
-            </span>
-          </li>
-          <li>
-            <span>
-              <a href={'https://twitter.com/a_be_ri'}>メニュー</a>
-            </span>
-          </li>
-        </HeaderContents>
+        <HeaderNavigation>
+          <HamburgerButton type="button">メニュー</HamburgerButton>
+          <NavigationList>
+            <li>
+              <span>
+                <Link href={'/'}>トップ</Link>
+              </span>
+            </li>
+            <li>
+              <span>
+                <Link href={'/blogs/'}>ブログ</Link>
+              </span>
+            </li>
+            <li>
+              <span>
+                <Link href={'/about/'}>私について</Link>
+              </span>
+            </li>
+            <li>
+              <Twitter>
+                <a href={'https://twitter.com/a_be_ri'}>X(Twitter)</a>
+              </Twitter>
+            </li>
+          </NavigationList>
+        </HeaderNavigation>
       </HeaderInner>
     </HeaderWrap>
   )
@@ -65,29 +78,31 @@ const HeaderWrap = styled.header`
   position: fixed;
   z-index: 100;
   width: 100%;
-  font-family: vdl-megamarupop-futoline;
   background-color: ${colorObj.baseGray};
 `
 const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   a {
-    background-color: ${colorObj.mainColor};
     display: block;
   }
-  a:hover {
-    background-color: #333;
-    color: #b7ff00;
-  }
   && a:focus {
-    outline: 4px solid #ff6110;
     outline-offset: -2px;
   }
 `
+
+//LOGO
+
 const HeaderSiteName = styled.div`
+  font-family: vdl-megamarupop-futoline;
   a {
     padding: 0 20px;
     border-right: 2px solid #333;
+    background-color: ${colorObj.mainColor};
+  }
+  a:hover {
+    background-color: #333;
+    color: ${colorObj.mainColor};
   }
   h1,
   span {
@@ -100,11 +115,20 @@ const HeaderSiteName = styled.div`
 //   display: flex;
 // `
 
-const HeaderContents = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  li {
+//Navigation
+
+const HeaderNavigation = styled.nav``
+
+const HamburgerButton = styled.button`
+  display: none;
+  @media (width <= 980px) {
+    display: block;
   }
+`
+
+const NavigationList = styled.ul`
+  display: flex;
+  height: 100%;
   a {
     width: 100%;
     height: 100%;
@@ -112,6 +136,43 @@ const HeaderContents = styled.ul`
     border-left: 2px solid #333;
     display: grid;
     place-content: center;
+    font-weight: 700;
+    //固有の設定
+    position: relative;
+    transition: all 0.3s ease 0s;
+  }
+  a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: ${colorObj.mainColor};
+    transform: scale(0, 1);
+    transform-origin: left top;
+    transition: all 0.3s ease 0s;
+  }
+  a:hover {
+    color: #000;
+  }
+  a:hover::before {
+    transform: scale(1, 1);
+  }
+  @media (width <= 980px) {
+    display: none;
+  }
+`
+
+const Twitter = styled.span`
+  a {
+    font-family: vdl-megamarupop-futoline;
+    background-color: ${colorObj.mainColor};
+  }
+  a:hover {
+    background-color: #333;
+    color: ${colorObj.mainColor};
   }
 `
 
