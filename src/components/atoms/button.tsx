@@ -19,15 +19,15 @@ const StyledBtn = styled(Link)`
   width: 300px;
   height: 50px;
   border-radius: 25px;
-  background-color: ${colorObj.mainColor};
+  background: ${colorObj.mainColor};
   border: 3px solid #333;
+  transition: all 0.2s;
   && {
     color: #333;
     font-weight: 700;
   }
   &:hover {
-    background: #333;
-    color: ${colorObj.mainColor};
+    background: ${colorObj.subColor};
   }
 `
 

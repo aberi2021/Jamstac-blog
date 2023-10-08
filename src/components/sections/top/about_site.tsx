@@ -40,7 +40,9 @@ const SectionTitle = styled.h2`
 `
 
 const SectionContents = styled.div`
-  margin-top: 1rem;
+  margin: 1rem auto 0;
+  width: 100%;
+  max-width: 908px;
 `
 
 export default TopAboutSite

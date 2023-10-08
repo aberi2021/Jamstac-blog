@@ -48,10 +48,7 @@ const BodyWrapper = styled.div`
 `
 
 const Main = styled.main`
-  width: 100%;
-  max-width: 908px;
   margin: 7rem auto;
-  padding: 0 1rem;
   grid-area: contents;
   p {
     margin-top: 1rem;

@@ -55,9 +55,6 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
           <SectionTitle>ブログだよ😊</SectionTitle>
           <SectionContents>
             <BlogList allBlogs={allBlogs} />
-            <ButtonWrapper>
-              <Button href={'/blogs'} label={'全ての記事を見る'} />
-            </ButtonWrapper>
           </SectionContents>
         </TopSection>
         <TopSection>
@@ -125,7 +122,9 @@ const TopContentsWrapper = styled.div`
   padding-bottom: 3rem;
 `
 
-const TopSection = styled.div``
+const TopSection = styled.div`
+  margin-top: 4rem;
+`
 
 const SectionContents = styled.div`
   margin-top: 1rem;

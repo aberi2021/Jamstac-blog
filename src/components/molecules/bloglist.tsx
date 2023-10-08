@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import FormatDate from '@/components/molecules/datetime'
 import VisuallyHidden from '@/components/atoms/visuallyhidden'
+import { colorObj } from '@/styles/color'
 
 // ブログデータの型
 interface Blog {
@@ -56,11 +57,16 @@ const BlogList: NextPageWithLayout<Props> = ({ allBlogs }) => {
           </li>
         ))}
       </Articles>
+      <LinkAria href={'/blogs'}>
+        ブログを全て見る<LinkEye>👀</LinkEye>
+      </LinkAria>
     </>
   )
 }
 
 const ImageWrapper = styled.div`
+  filter: grayscale(0%);
+  transition: all 0.3s;
   img {
     width: 100%;
     height: auto;
@@ -72,7 +78,6 @@ const ImageWrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding: 1rem;
-  height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 0.5rem;
@@ -95,6 +100,18 @@ const CategoryName = styled.span`
 `
 
 const CardTitle = styled.p`
+  a {
+    text-decoration: none; /* デフォルトの下線を非表示にする */
+    background-image: linear-gradient(
+      90deg,
+      ${colorObj.mainColor},
+      ${colorObj.mainColor}
+    ); /* 線の色 */
+    background-repeat: no-repeat;
+    background-position: left bottom; /* 線の起点を左・下に設定 */
+    background-size: 0; /* 線の横幅を0、縦幅を1pxに */
+    transition: background-size 0.2s; /* 線を伸ばすアニメーション実行時間を指定 */
+  }
   && {
     font-weight: 700;
     margin-top: 0;
@@ -106,24 +123,15 @@ const Articles = styled.ul`
   margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  border-top: 2px solid ${colorObj.baseDarkGray};
+  border-left: 2px solid ${colorObj.baseDarkGray};
+  position: relative;
   li {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    border: solid 3px #000;
-    overflow: hidden;
-    border-radius: 22px;
-    box-shadow: 5px 5px 0 #000;
     position: relative;
-  }
-  li:hover {
-    box-shadow: 5px 5px 0 #b7ff00;
-    /* ${CardTitle} {
-      border-bottom: 3px solid #b7ff00;
-    } */
-  }
-  li:has(a:focus) {
-    box-shadow: 5px 5px 0 #b7ff00;
+    border-bottom: 2px solid ${colorObj.baseDarkGray};
+    border-right: 2px solid ${colorObj.baseDarkGray};
+    background-color: ${colorObj.baseGray};
+    transition: all 0.3s;
   }
   a {
     text-decoration: none;
@@ -136,6 +144,43 @@ const Articles = styled.ul`
     right: 0;
     bottom: 0;
     left: 0;
+    border: 5px solid transparent;
+    transition: all 0.3s;
+  }
+  li:hover ${ImageWrapper} {
+    filter: grayscale(100%);
+  }
+  li:hover ${CardTitle} a {
+    background-size: 100%; /* 線の横幅を100%にする */
+  }
+  li:hover {
+    background: ${colorObj.subGray};
+  }
+`
+
+const LinkEye = styled.span``
+
+const LinkAria = styled(Link)`
+  border-bottom: 2px solid ${colorObj.baseDarkGray};
+  padding: 1rem 0;
+  text-align: center;
+  display: block;
+  background-color: ${colorObj.mainColor};
+  font-weight: 700;
+  transition: all 0.2s;
+  font-size: 1.25rem;
+  ${LinkEye} {
+    opacity: 0;
+    transition: all 0.1s;
+    font-size: 2rem;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+  &:hover {
+    background: ${colorObj.subColor};
+    ${LinkEye} {
+      opacity: 1;
+    }
   }
 `
 
