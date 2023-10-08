@@ -1,6 +1,6 @@
 import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
-import { colorObj } from '@/styles/color'
+import { colorObj } from '@/styles/globals'
 
 import { Roboto } from 'next/font/google'
 
@@ -38,7 +38,6 @@ const BodyWrapper = styled.div`
   font-family: var(--font-roboto), sans-serif;
   a {
     color: #000;
-    text-decoration: none;
   }
   a:focus-visible,
   button:focus-visible {
@@ -52,6 +51,7 @@ const Main = styled.main`
   grid-area: contents;
   p {
     margin-top: 1rem;
+    font-size: 1.25rem;
   }
 `
 

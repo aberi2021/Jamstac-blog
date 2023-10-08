@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router' // useRouterをインポート
 
-import { colorObj } from '@/styles/color'
+import { colorObj } from '@/styles/globals'
 
 const Header: FC = () => {
   const router = useRouter() // useRouterを初期化
@@ -85,6 +85,8 @@ const HeaderInner = styled.div`
   justify-content: space-between;
   a {
     display: block;
+    transition: all 0.2s ease 0s;
+    text-decoration: none;
   }
   && a:focus {
     outline-offset: -2px;
@@ -101,8 +103,7 @@ const HeaderSiteName = styled.div`
     background-color: ${colorObj.mainColor};
   }
   a:hover {
-    background-color: #333;
-    color: ${colorObj.mainColor};
+    background-color: ${colorObj.subColor};
   }
   h1,
   span {
@@ -139,7 +140,6 @@ const NavigationList = styled.ul`
     font-weight: 700;
     //固有の設定
     position: relative;
-    transition: all 0.3s ease 0s;
   }
   a::before {
     content: '';
@@ -152,10 +152,7 @@ const NavigationList = styled.ul`
     background-color: ${colorObj.mainColor};
     transform: scale(0, 1);
     transform-origin: left top;
-    transition: all 0.3s ease 0s;
-  }
-  a:hover {
-    color: #000;
+    transition: all 0.2s ease 0s;
   }
   a:hover::before {
     transform: scale(1, 1);
@@ -171,8 +168,8 @@ const Twitter = styled.span`
     background-color: ${colorObj.mainColor};
   }
   a:hover {
-    background-color: #333;
-    color: ${colorObj.mainColor};
+    background-color: ${colorObj.subColor};
+    color: #333;
   }
 `
 

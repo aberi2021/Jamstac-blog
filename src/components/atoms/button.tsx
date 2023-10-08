@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { colorObj } from '@/styles/color'
+import { colorObj } from '@/styles/globals'
 
 type Props = {
   label: string
@@ -22,6 +22,7 @@ const StyledBtn = styled(Link)`
   background: ${colorObj.mainColor};
   border: 3px solid #333;
   transition: all 0.2s;
+  text-decoration: none;
   && {
     color: #333;
     font-weight: 700;

@@ -4,7 +4,6 @@ import type { AppProps } from 'next/app'
 import { NextSeo } from 'next-seo'
 import Head from 'next/head'
 import '../styles/reset.css'
-import '../styles/globals.css'
 
 export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<
   P,

@@ -2,11 +2,9 @@ import { GetStaticProps } from 'next'
 import type { NextPageWithLayout } from './_app'
 import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
-import Link from 'next/link'
 import TopAboutSite from '@/components/sections/top/about_site'
 import TopAboutMe from '@/components/sections/top/about_me'
 import TopSlider from '@/components/sections/top/slider'
-import Button from '@/components/atoms/button'
 import '@/styles/Home.module.css'
 import styled from 'styled-components'
 import BlogList from '@/components/molecules/bloglist'
@@ -40,10 +38,9 @@ interface Blog {
 
 type Props = {
   allBlogs: Blog[]
-  categoryBlogs: Blog[]
 }
 
-const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
+const Home: NextPageWithLayout<Props> = ({ allBlogs }) => {
   return (
     <>
       <TopContentsWrapper>
@@ -53,29 +50,12 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs, categoryBlogs }) => {
         </TopSection>
         <TopSection>
           <SectionTitle>ブログだよ😊</SectionTitle>
+          <BlogDescriotion>ほぼメモ。たまにポエム。</BlogDescriotion>
           <SectionContents>
             <BlogList allBlogs={allBlogs} />
           </SectionContents>
         </TopSection>
-        <TopSection>
-          <SectionTitle>「このサイトについて」カテゴリーの記事</SectionTitle>
-          <SectionContents>
-            <ul>
-              {categoryBlogs.map((blog) => (
-                <li key={blog.id}>
-                  <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
-                </li>
-              ))}
-            </ul>
-            <ButtonWrapper>
-              <Button
-                href={`/blogs/category/lbmyk28j226`}
-                label={`このカテゴリーの記事をもっと読む`}
-                aria-label="このサイトについての記事をもっと読む"
-              />
-            </ButtonWrapper>
-          </SectionContents>
-        </TopSection>
+
         <TopSection>
           <TopAboutMe />
         </TopSection>
@@ -95,20 +75,9 @@ export const getStaticProps: GetStaticProps = async () => {
     queries: { limit: 6, orders: '-date' },
   })
 
-  // カテゴリー別新着6件（備忘録）を取得（ここでカテゴリーIDを指定）
-  const categoryBlogs = await client.get({
-    endpoint: 'blogs',
-    queries: {
-      limit: 6,
-      orders: '-date',
-      filters: 'category[equals]lbmyk28j226',
-    },
-  })
-
   return {
     props: {
       allBlogs: allBlogs.contents,
-      categoryBlogs: categoryBlogs.contents,
     },
   }
 }
@@ -123,7 +92,9 @@ const TopContentsWrapper = styled.div`
 `
 
 const TopSection = styled.div`
-  margin-top: 4rem;
+  &:not(:first-child) {
+    margin-top: 4rem;
+  }
 `
 
 const SectionContents = styled.div`
@@ -137,8 +108,7 @@ const SectionTitle = styled.h2`
   font-weight: 400;
 `
 
-const ButtonWrapper = styled.div`
-  margin: 2rem;
+const BlogDescriotion = styled.p`
   text-align: center;
 `
 

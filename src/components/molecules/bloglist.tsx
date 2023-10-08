@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import FormatDate from '@/components/molecules/datetime'
 import VisuallyHidden from '@/components/atoms/visuallyhidden'
-import { colorObj } from '@/styles/color'
+import { colorObj } from '@/styles/globals'
 
 // ブログデータの型
 interface Blog {
@@ -169,6 +169,7 @@ const LinkAria = styled(Link)`
   font-weight: 700;
   transition: all 0.2s;
   font-size: 1.25rem;
+  text-decoration: none;
   ${LinkEye} {
     opacity: 0;
     transition: all 0.1s;
