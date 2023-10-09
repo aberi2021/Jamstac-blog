@@ -27,22 +27,23 @@ const Header: FC = () => {
       </HeaderSiteName>
     )
 
+  let HeaderBottom = null
+
+  if (currentPath === '/') {
+    HeaderBottom = (
+      <SiteExplanation>
+        <p>
+          このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは
+          <Link href="/about-site/">このサイトについて</Link>をご覧ください。
+        </p>
+      </SiteExplanation>
+    )
+  }
+
   return (
     <HeaderWrap>
       <HeaderInner>
         {headerLogo}
-        {/* <HeaderChanges>
-          <li>
-            <span>
-              <a href={'https://twitter.com/a_be_ri'}>文字を変える</a>
-            </span>
-          </li>
-          <li>
-            <span>
-              <a href={'https://twitter.com/a_be_ri'}>色を変える</a>
-            </span>
-          </li>
-        </HeaderChanges> */}
         <HeaderNavigation>
           <HamburgerButton type="button">メニュー</HamburgerButton>
           <NavigationList>
@@ -69,12 +70,12 @@ const Header: FC = () => {
           </NavigationList>
         </HeaderNavigation>
       </HeaderInner>
+      {HeaderBottom}
     </HeaderWrap>
   )
 }
 
 const HeaderWrap = styled.header`
-  border-bottom: 2px solid #333;
   position: fixed;
   z-index: 100;
   width: 100%;
@@ -83,6 +84,7 @@ const HeaderWrap = styled.header`
 const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid #333;
   a {
     display: block;
     transition: all 0.2s ease 0s;
@@ -170,6 +172,20 @@ const Twitter = styled.span`
   a:hover {
     background-color: ${colorObj.subColor};
     color: #333;
+  }
+`
+
+//HeaderBottom
+const SiteExplanation = styled.div`
+  text-align: center;
+  border-bottom: 2px solid #333;
+  && p {
+    margin: 0;
+    font-size: 0.875rem;
+    padding: 8px 0 4px;
+  }
+  a {
+    font-weight: 700;
   }
 `
 

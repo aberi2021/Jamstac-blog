@@ -4,19 +4,8 @@ import { client } from '@/lib/client'
 import DefaultLayout from '@/components/layout/default-layout'
 import TopAboutMe from '@/components/sections/top/about_me'
 import TopSlider from '@/components/sections/top/slider'
-import '@/styles/Home.module.css'
 import styled from 'styled-components'
 import BlogList from '@/components/molecules/bloglist'
-import Link from 'next/link'
-
-// import { Monomaniac_One } from 'next/font/google'
-
-// //GoogleFont
-// const mono = Monomaniac_One({
-//   weight: ['400'],
-//   subsets: ['latin'],
-//   display: 'swap',
-// })
 
 // ブログデータの型
 interface Blog {
@@ -44,12 +33,12 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs }) => {
   return (
     <>
       <TopContentsWrapper>
-        <SiteExplanation>
+        {/* <SiteExplanation>
           <p>
             このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは
             <Link href="/about-site/">このサイトについて</Link>をご覧ください。
           </p>
-        </SiteExplanation>
+        </SiteExplanation> */}
         {/* このサイトについて */}
         <TopSection>
           <SectionTitle>ブログだよ😊</SectionTitle>
@@ -94,18 +83,18 @@ const TopContentsWrapper = styled.div`
   padding-bottom: 3rem;
 `
 
-const SiteExplanation = styled.div`
-  text-align: center;
-  border-bottom: 2px solid #333;
-  && p {
-    margin: 0;
-    font-size: 0.875rem;
-    padding: 8px 0 4px;
-  }
-  a {
-    font-weight: 700;
-  }
-`
+// const SiteExplanation = styled.div`
+//   text-align: center;
+//   border-bottom: 2px solid #333;
+//   && p {
+//     margin: 0;
+//     font-size: 0.875rem;
+//     padding: 8px 0 4px;
+//   }
+//   a {
+//     font-weight: 700;
+//   }
+// `
 
 const TopSection = styled.div`
   &:not(:first-child) {

@@ -47,7 +47,7 @@ const BodyWrapper = styled.div`
 `
 
 const Main = styled.main`
-  margin: 3rem auto;
+  margin: 8rem auto;
   grid-area: contents;
   p {
     margin-top: 1rem;
