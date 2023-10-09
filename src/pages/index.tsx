@@ -8,6 +8,7 @@ import TopSlider from '@/components/sections/top/slider'
 import '@/styles/Home.module.css'
 import styled from 'styled-components'
 import BlogList from '@/components/molecules/bloglist'
+import Link from 'next/link'
 
 // import { Monomaniac_One } from 'next/font/google'
 
@@ -44,6 +45,12 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs }) => {
   return (
     <>
       <TopContentsWrapper>
+        <SiteExplanation>
+          <p>
+            このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは
+            <Link href="/about-site/">このサイトについて</Link>をご覧ください。
+          </p>
+        </SiteExplanation>
         {/* このサイトについて */}
         <TopSection>
           <TopAboutSite />
@@ -89,6 +96,19 @@ const TopContentsWrapper = styled.div`
   flex-direction: column;
   row-gap: 3rem;
   padding-bottom: 3rem;
+`
+
+const SiteExplanation = styled.div`
+  text-align: center;
+  border-bottom: 2px solid #333;
+  && p {
+    margin: 0;
+    font-size: 0.875rem;
+    padding: 8px 0 4px;
+  }
+  a {
+    font-weight: 700;
+  }
 `
 
 const TopSection = styled.div`
