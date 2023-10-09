@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import { colorObj } from '@/styles/globals'
 
 type Props = {
   label: string
@@ -18,15 +19,16 @@ const StyledBtn = styled(Link)`
   width: 300px;
   height: 50px;
   border-radius: 25px;
-  background: #333;
+  background: ${colorObj.mainColor};
   border: 3px solid #333;
+  transition: all 0.2s;
+  text-decoration: none;
   && {
-    color: #fff;
+    color: #333;
     font-weight: 700;
   }
   &:hover {
-    background-color: #b7ff00;
-    color: #000;
+    background: ${colorObj.subColor};
   }
 `
 

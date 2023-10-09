@@ -1,47 +1,41 @@
 import styled from 'styled-components'
+import { contentsWidth } from '@/styles/globals'
+// import Link from 'next/link'
 
 const TopAboutSite = () => {
   //:props
   return (
     <>
-      <SectionTitle>このサイトについて💻</SectionTitle>
       <SectionContents>
         <p>
-          このサイトはあべがブログを書いたり、Next.jsを練習したり、好き勝手するためのものです。
+          このサイトはあべのNext.js練習用兼ポートフォリオサイトです。
           <br />
-          そのため、制作途中でガンガン崩れている場合もあります。ご了承ください。
-        </p>
-        <p>
           以下リンクでコードも見れます。拙いですがよろしければご確認ください。
           <br />
-          <a
-            href="https://github.com/aberi2021/jamstac-blog"
-            aria-label="このサイトのGithubリポジトリへ移動する"
-          >
-            https://github.com/aberi2021/jamstac-blog
+          <a href="https://github.com/aberi2021/jamstac-blog">
+            このサイトのGithubリポジトリへ移動する
           </a>
-          <br />
-          ひたすらもがいているので、有識者の人がみたらめまいがするかもしれません。お気をつけください。
-          <br />
+        </p>
+        <p>
           Next.jsもReactもTypeScriptも全然わからない、なんならJSも無理なレベルでほぼコピペとChatGPTにおんぶに抱っこです。
           <br />
-          それでも楽しいので、理解を深めていきたいなと思っています。
         </p>
+        {/* <h2>この記事を読んだらもっとわかるかも？</h2>
+        <ul>
+          <li>
+            <Link href={`/blogs/rv4ohmwsguu`}>
+              さっさとコードから書いておけばよかった
+            </Link>
+          </li>
+        </ul> */}
       </SectionContents>
     </>
   )
 }
 
-const SectionTitle = styled.h2`
-  font-size: 4rem;
-  text-align: center;
-  font-family: vdl-megamarupop-futoline, sans-serif;
-  font-weight: 400;
-  text-shadow: 4px 3px 0 #b7ff00;
-`
-
 const SectionContents = styled.div`
-  margin-top: 1rem;
+  margin: 1rem auto 0;
+  max-width: ${contentsWidth.default};
 `
 
 export default TopAboutSite
