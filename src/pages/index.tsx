@@ -53,9 +53,6 @@ const Home: NextPageWithLayout<Props> = ({ allBlogs }) => {
         </SiteExplanation>
         {/* このサイトについて */}
         <TopSection>
-          <TopAboutSite />
-        </TopSection>
-        <TopSection>
           <SectionTitle>ブログだよ😊</SectionTitle>
           <BlogDescriotion>ほぼメモ。たまにポエム。</BlogDescriotion>
           <SectionContents>
