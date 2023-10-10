@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router' // useRouterをインポート
 import Gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 import { colorObj } from '@/styles/globals'
 
@@ -26,26 +27,25 @@ const Header: FC = () => {
       </HeaderSiteName>
     )
 
-  // テキストを一文字ずつ<div></div>で囲む関数
-  const wrapTextInSpans = (text: string) => {
-    return text.split('').map((char, index) => <span key={index}>{char}</span>)
-  }
+  //****************GSAP****************
 
-  // レイアウト作成後の動作
+  // ScrollTriggerの初期化
+  Gsap.registerPlugin(ScrollTrigger)
+  Gsap.config({
+    nullTargetWarn: false,
+  })
+
   useEffect(() => {
-    // フェードイン表示する
-    Gsap.fromTo(
-      '#headertext span', // アニメーションさせる要素
-      {
-        autoAlpha: 0, // アニメーション開始前は透明
-        y: 20, // 20px下に移動
+    // フェードイン表示するアニメーション
+    Gsap.to('#headertext', {
+      y: -40,
+      scrollTrigger: {
+        trigger: '#headertext',
+        start: '120',
+        markers: true,
+        scrub: 2,
       },
-      {
-        autoAlpha: 1, // アニメーション後は出現(透過率0)
-        y: 0, // 20px上に移動
-        stagger: 0.05, // 0.2秒遅れて順番に再生
-      }
-    )
+    })
   }, [])
 
   return (
@@ -78,16 +78,11 @@ const Header: FC = () => {
           </NavigationList>
         </HeaderNavigation>
       </HeaderInner>
-      <SiteExplanation>
+      <SiteExplanation id="headertext">
         {currentPath === '/' && (
-          <ExplanationText id="headertext">
-            {wrapTextInSpans(
-              'このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは '
-            )}
-            <Link href="/about-site/">
-              {wrapTextInSpans(' このサイトについて')}
-            </Link>
-            {wrapTextInSpans(' をご覧ください。')}
+          <ExplanationText>
+            このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは
+            <Link href="/about-site/">このサイトについて</Link>をご覧ください。
           </ExplanationText>
         )}
       </SiteExplanation>
