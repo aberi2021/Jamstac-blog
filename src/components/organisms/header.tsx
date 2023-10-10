@@ -1,44 +1,52 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router' // useRouterをインポート
+import Gsap from 'gsap'
 
 import { colorObj } from '@/styles/globals'
 
 const Header: FC = () => {
   const router = useRouter() // useRouterを初期化
-
-  // 現在のページパスを取得
-  const currentPath = router.pathname
+  const currentPath = router.pathname // 現在のページパスを取得
 
   // トップページの場合、h1要素をdiv要素に変更
   const headerLogo =
     currentPath === '/' ? (
       <HeaderSiteName>
-        <h1>
+        <h1 id="headerLogo">
           <Link href={'/'}>あべのサイト</Link>
         </h1>
       </HeaderSiteName>
     ) : (
       <HeaderSiteName>
-        <span>
+        <span id="headerLogo">
           <Link href={'/'}>あべのサイト</Link>
         </span>
       </HeaderSiteName>
     )
 
-  let HeaderBottom = null
-
-  if (currentPath === '/') {
-    HeaderBottom = (
-      <SiteExplanation>
-        <p>
-          このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは
-          <Link href="/about-site/">このサイトについて</Link>をご覧ください。
-        </p>
-      </SiteExplanation>
-    )
+  // テキストを一文字ずつ<div></div>で囲む関数
+  const wrapTextInSpans = (text: string) => {
+    return text.split('').map((char, index) => <span key={index}>{char}</span>)
   }
+
+  // レイアウト作成後の動作
+  useEffect(() => {
+    // フェードイン表示する
+    Gsap.fromTo(
+      '#headertext span', // アニメーションさせる要素
+      {
+        autoAlpha: 0, // アニメーション開始前は透明
+        y: 20, // 20px下に移動
+      },
+      {
+        autoAlpha: 1, // アニメーション後は出現(透過率0)
+        y: 0, // 20px上に移動
+        stagger: 0.05, // 0.2秒遅れて順番に再生
+      }
+    )
+  }, [])
 
   return (
     <HeaderWrap>
@@ -70,10 +78,24 @@ const Header: FC = () => {
           </NavigationList>
         </HeaderNavigation>
       </HeaderInner>
-      {HeaderBottom}
+      <SiteExplanation>
+        {currentPath === '/' && (
+          <ExplanationText id="headertext">
+            {wrapTextInSpans(
+              'このサイトはあべの練習用兼ポートフォリオサイトです。詳しくは '
+            )}
+            <Link href="/about-site/">
+              {wrapTextInSpans(' このサイトについて')}
+            </Link>
+            {wrapTextInSpans(' をご覧ください。')}
+          </ExplanationText>
+        )}
+      </SiteExplanation>
     </HeaderWrap>
   )
 }
+
+// 以下略
 
 const HeaderWrap = styled.header`
   position: fixed;
@@ -179,13 +201,22 @@ const Twitter = styled.span`
 const SiteExplanation = styled.div`
   text-align: center;
   border-bottom: 2px solid #333;
-  && p {
+  a {
+    font-weight: 700;
+  }
+  div {
+    display: inline-block;
+  }
+`
+
+const ExplanationText = styled.p`
+  && {
     margin: 0;
     font-size: 0.875rem;
     padding: 8px 0 4px;
   }
-  a {
-    font-weight: 700;
+  span {
+    display: inline-block;
   }
 `
 

@@ -18,6 +18,7 @@
     "dayjs": "^1.11.10",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "gsap": "^3.12.2",
     "highlight.js": "^11.8.0",
     "microcms-js-sdk": "^2.6.1",
     "next": "13.4.19",
