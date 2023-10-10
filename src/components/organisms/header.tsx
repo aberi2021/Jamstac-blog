@@ -38,12 +38,13 @@ const Header: FC = () => {
   useEffect(() => {
     // フェードイン表示するアニメーション
     Gsap.to('#headertext', {
-      y: -40,
+      y: -60,
+      duration: 1, //５秒後かけてアニメーションさせる
       scrollTrigger: {
         trigger: '#headertext',
-        start: '120',
+        start: '160',
         markers: true,
-        scrub: 2,
+        scrub: 1,
       },
     })
   }, [])
@@ -96,12 +97,12 @@ const HeaderWrap = styled.header`
   position: fixed;
   z-index: 100;
   width: 100%;
-  background-color: ${colorObj.baseGray};
 `
 const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #333;
+  background-color: ${colorObj.baseGray};
   a {
     display: block;
     transition: all 0.2s ease 0s;
@@ -194,8 +195,11 @@ const Twitter = styled.span`
 
 //HeaderBottom
 const SiteExplanation = styled.div`
+  background-color: ${colorObj.baseGray};
   text-align: center;
   border-bottom: 2px solid #333;
+  position: relative;
+  z-index: -1;
   a {
     font-weight: 700;
   }
