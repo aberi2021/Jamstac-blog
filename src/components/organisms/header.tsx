@@ -31,19 +31,17 @@ const Header: FC = () => {
 
   // ScrollTriggerの初期化
   Gsap.registerPlugin(ScrollTrigger)
-  Gsap.config({
-    nullTargetWarn: false,
-  })
 
   useEffect(() => {
     // フェードインアウト
     Gsap.to('#headertext', {
       y: -60,
-      duration: 1,
       scrollTrigger: {
         trigger: '#headertext',
-        start: '160',
+        start: '120',
+        end: '200',
         scrub: 1,
+        markers: true,
       },
     })
   }, [])
