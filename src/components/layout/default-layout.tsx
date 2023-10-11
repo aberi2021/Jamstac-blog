@@ -2,13 +2,15 @@ import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
 import { colorObj } from '@/styles/globals'
 
-import { Roboto } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
 
 //GoogleFont
-const roboto = Roboto({
-  subsets: ['latin'],
+
+const notoM = Noto_Sans_JP({
   weight: '400',
-  variable: '--font-roboto',
+  variable: '--font-notoM',
+  display: 'swap',
+  preload: false,
 })
 
 import { FC, ReactNode } from 'react'
@@ -21,7 +23,9 @@ type Props = {
 const DefaultLayout: FC<Props> = (props) => {
   //:props
   return (
-    <BodyWrapper className={`${roboto.variable}`}>
+    <BodyWrapper
+      className={`${notoM.variable}`} //notoL.variable
+    >
       <Header />
       <Main>{props.children}</Main>
       <Footer />
@@ -35,7 +39,7 @@ const BodyWrapper = styled.div`
   display: grid;
   grid-template: 'header' auto 'contents' 1fr 'footer' auto/100%;
   min-height: 100vh;
-  font-family: var(--font-roboto), sans-serif;
+  font-family: var(--font-notoM), sans-serif;
   a {
     color: #000;
   }
