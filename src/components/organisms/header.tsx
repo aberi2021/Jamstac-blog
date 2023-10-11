@@ -36,14 +36,13 @@ const Header: FC = () => {
   })
 
   useEffect(() => {
-    // フェードイン表示するアニメーション
+    // フェードインアウト
     Gsap.to('#headertext', {
       y: -60,
-      duration: 1, //５秒後かけてアニメーションさせる
+      duration: 1,
       scrollTrigger: {
         trigger: '#headertext',
         start: '160',
-        markers: true,
         scrub: 1,
       },
     })
@@ -57,19 +56,19 @@ const Header: FC = () => {
           <HamburgerButton type="button">メニュー</HamburgerButton>
           <NavigationList>
             <li>
-              <span>
-                <Link href={'/'}>トップ</Link>
-              </span>
+              <Link href={'/'}>
+                <LinkText>トップ</LinkText>
+              </Link>
             </li>
             <li>
-              <span>
-                <Link href={'/blogs/'}>ブログ</Link>
-              </span>
+              <Link href={'/blogs/'}>
+                <LinkText>ブログ</LinkText>
+              </Link>
             </li>
             <li>
-              <span>
-                <Link href={'/about/'}>私について</Link>
-              </span>
+              <Link href={'/about/'}>
+                <LinkText>私について</LinkText>
+              </Link>
             </li>
             <li>
               <Twitter>
@@ -166,7 +165,6 @@ const NavigationList = styled.ul`
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
     width: 100%;
     height: 100%;
     background-color: ${colorObj.mainColor};
@@ -180,6 +178,10 @@ const NavigationList = styled.ul`
   @media (width <= 980px) {
     display: none;
   }
+`
+
+const LinkText = styled.span`
+  z-index: 1;
 `
 
 const Twitter = styled.span`
