@@ -50,7 +50,7 @@ const Header: FC = () => {
     <HeaderWrap>
       <HeaderInner>
         {headerLogo}
-        <HeaderNavigation>
+        <HeaderNavigation aria-label="メインメニュー">
           <HamburgerButton type="button">メニュー</HamburgerButton>
           <NavigationList>
             <li>
@@ -69,9 +69,9 @@ const Header: FC = () => {
               </Link>
             </li>
             <li>
-              <Twitter>
-                <a href={'https://twitter.com/a_be_ri'}>X(Twitter)</a>
-              </Twitter>
+              <a href={'https://twitter.com/a_be_ri'}>
+                <LinkText>X(Twitter)</LinkText>
+              </a>
             </li>
           </NavigationList>
         </HeaderNavigation>
@@ -126,12 +126,26 @@ const HeaderSiteName = styled.div`
   span {
     font-size: 2rem;
     font-weight: bold;
+    position: relative;
+    z-index: 1;
+  }
+  a::after {
+    content: 'トップに戻るよ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+    z-index: -1;
+    font-size: 1rem;
+    font-family: sans-serif;
+  }
+  a:hover::after {
+    right: -50%;
+  }
+  a:focus::after {
+    right: -50%;
   }
 `
-
-// const HeaderChanges = styled.ul`
-//   display: flex;
-// `
 
 //Navigation
 
@@ -180,17 +194,6 @@ const NavigationList = styled.ul`
 
 const LinkText = styled.span`
   z-index: 1;
-`
-
-const Twitter = styled.span`
-  a {
-    font-family: vdl-megamarupop-futoline;
-    background-color: ${colorObj.mainColor};
-  }
-  a:hover {
-    background-color: ${colorObj.subColor};
-    color: #333;
-  }
 `
 
 //HeaderBottom
