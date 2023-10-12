@@ -15,13 +15,13 @@ const Header: FC = () => {
   const headerLogo =
     currentPath === '/' ? (
       <HeaderSiteName>
-        <h1 id="headerLogo">
+        <h1>
           <Link href={'/'}>あべのサイト</Link>
         </h1>
       </HeaderSiteName>
     ) : (
       <HeaderSiteName>
-        <span id="headerLogo">
+        <span>
           <Link href={'/'}>あべのサイト</Link>
         </span>
       </HeaderSiteName>
