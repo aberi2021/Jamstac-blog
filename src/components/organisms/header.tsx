@@ -138,7 +138,7 @@ const HeaderSiteName = styled.div`
     z-index: -1;
     font-size: 1rem;
     text-align: center;
-    font-family: var(--font-notoM), sans-serif;
+    font-family: var(--font-yomogi), sans-serif;
     font-weight: 500;
   }
   a:hover::after {

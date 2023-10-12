@@ -1,20 +1,26 @@
 import Header from '@/components/organisms/header'
 import Footer from '@/components/organisms/footer'
 import { colorObj } from '@/styles/globals'
+import { FC, ReactNode } from 'react'
+import styled from 'styled-components'
 
-import { Noto_Sans_JP } from 'next/font/google'
+import { Noto_Sans_JP, Yomogi } from 'next/font/google'
 
 //GoogleFont
 
 const notoM = Noto_Sans_JP({
-  weight: '400',
+  weight: ['400', '700'],
+  subsets: ['latin'],
   variable: '--font-notoM',
+  display: 'swap',
+})
+
+const yomogi = Yomogi({
+  weight: '400',
+  variable: '--font-yomogi',
   display: 'swap',
   preload: false,
 })
-
-import { FC, ReactNode } from 'react'
-import styled from 'styled-components'
 
 type Props = {
   children: ReactNode
@@ -24,7 +30,7 @@ const DefaultLayout: FC<Props> = (props) => {
   //:props
   return (
     <BodyWrapper
-      className={`${notoM.variable}`} //notoL.variable
+      className={`${notoM.variable} ${yomogi.variable}`} //GoogleFonts指定
     >
       <Header />
       <Main>{props.children}</Main>
