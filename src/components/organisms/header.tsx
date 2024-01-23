@@ -116,7 +116,6 @@ const HeaderSiteName = styled.div`
     padding: 0 20px;
     border-right: 2px solid #333;
     background-color: ${colorObj.mainColor};
-    font-family: vdl-megamarupop-futoline;
   }
   a:hover {
     background-color: ${colorObj.subColor};
@@ -127,25 +126,26 @@ const HeaderSiteName = styled.div`
     font-weight: bold;
     position: relative;
     z-index: 1;
+    font-family: vdl-megamarupop-futoline;
   }
   a::after {
-    content: 'トップに戻るよ🏃‍♀️';
+    content: 'トップにもどるよ🏃‍♀️';
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
     transition: all 0.5s;
     z-index: -1;
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-align: center;
-    font-family: var(--font-yomogi), sans-serif;
+    font-family: var(--font-cherry), sans-serif;
     font-weight: 500;
   }
   a:hover::after {
-    right: -55%;
+    right: -62%;
   }
   a:focus::after {
-    right: -55%;
+    right: -62%;
   }
 `
 

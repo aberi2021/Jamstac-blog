@@ -49,44 +49,46 @@ const BlogDetail: NextPageWithLayout<Props> = (props) => {
     <>
       <NextSeo title={`${title} | あべのサイト`} />
       {/* <BlogPage> */}
-      <BreadCrumb pageTitle={title} category={category} />
-      <Article>
-        <BlogTitle>{title}</BlogTitle>
-        <Category>
-          {category ? category.name : 'カテゴリーがありません'}
-        </Category>
-        {eyecatch && (
-          <Image
-            src={eyecatch.url}
-            width={eyecatch.width}
-            height={eyecatch.height}
-            alt={''}
-          />
-        )}
-        <ContentsWrapper>
-          <div dangerouslySetInnerHTML={{ __html: content }}></div>
-        </ContentsWrapper>
-        <PrevNextPosts>
-          {prevPost && (
-            <p>
-              <Link href={`/blogs/${prevPost.id}`}>
-                前の記事：{prevPost.title}
-              </Link>
-            </p>
+      <PageWrapper>
+        <BreadCrumb pageTitle={title} category={category} />
+        <Article>
+          <BlogTitle>{title}</BlogTitle>
+          <Category>
+            {category ? category.name : 'カテゴリーがありません'}
+          </Category>
+          {eyecatch && (
+            <Image
+              src={eyecatch.url}
+              width={eyecatch.width}
+              height={eyecatch.height}
+              alt={''}
+            />
           )}
-          {nextPost && (
-            <p>
-              <Link href={`/blogs/${nextPost.id}`}>
-                次の記事：{nextPost.title}
-              </Link>
-            </p>
-          )}
-        </PrevNextPosts>
-      </Article>
-      <ButtonWrapper>
-        <Button href={'/'} label={'トップへ戻る'} />
-      </ButtonWrapper>
-      {/* </BlogPage> */}
+          <ContentsWrapper>
+            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+          </ContentsWrapper>
+          <PrevNextPosts>
+            {prevPost && (
+              <p>
+                <Link href={`/blogs/${prevPost.id}`}>
+                  前の記事：{prevPost.title}
+                </Link>
+              </p>
+            )}
+            {nextPost && (
+              <p>
+                <Link href={`/blogs/${nextPost.id}`}>
+                  次の記事：{nextPost.title}
+                </Link>
+              </p>
+            )}
+          </PrevNextPosts>
+        </Article>
+        <ButtonWrapper>
+          <Button href={'/'} label={'トップへ戻る'} />
+        </ButtonWrapper>
+        {/* </BlogPage> */}
+      </PageWrapper>
     </>
   )
 }
@@ -135,12 +137,16 @@ BlogDetail.getLayout = (page) => <DefaultLayout>{page}</DefaultLayout>
 //   max-width: 47rem;
 //   margin: 0 auto;
 // `
+const PageWrapper = styled.div`
+  padding: 0 3rem;
+`
 
 const Article = styled.article`
   background-color: #fff;
   padding: 2rem 3rem;
   border: 2px solid #333;
   border-radius: 20px;
+  max-width: 47rem;
 `
 
 const BlogTitle = styled.h1`

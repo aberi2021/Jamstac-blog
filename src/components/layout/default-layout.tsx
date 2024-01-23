@@ -4,7 +4,7 @@ import { colorObj } from '@/styles/globals'
 import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-import { Noto_Sans_JP, Yomogi } from 'next/font/google'
+import { Noto_Sans_JP, Cherry_Bomb_One } from 'next/font/google'
 
 //GoogleFont
 
@@ -15,9 +15,9 @@ const notoM = Noto_Sans_JP({
   display: 'swap',
 })
 
-const yomogi = Yomogi({
+const cherry = Cherry_Bomb_One({
   weight: '400',
-  variable: '--font-yomogi',
+  variable: '--font-cherry',
   display: 'swap',
   preload: false,
 })
@@ -30,7 +30,7 @@ const DefaultLayout: FC<Props> = (props) => {
   //:props
   return (
     <BodyWrapper
-      className={`${notoM.variable} ${yomogi.variable}`} //GoogleFonts指定
+      className={`${notoM.variable} ${cherry.variable}`} //GoogleFonts指定
     >
       <Header />
       <Main>{props.children}</Main>
